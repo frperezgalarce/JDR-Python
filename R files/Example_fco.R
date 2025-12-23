@@ -15,7 +15,7 @@ source("periodogram.component.r")         # functions for periodogram of a singl
 source("cross.spectrum.r")                # main cross-spectrum estimator for two series
 source("power.spectrum.r")                # power spectrum / auto-spectrum functions
 source("cross.spec.mtls.r")               # multitaper / MTLS-based cross-spectrum estimator
-
+source("safe_integrate.r")
 
 ## -----------------------------------------------------------
 ## Load and plot the first light curve (irregularly sampled)
@@ -126,8 +126,15 @@ sx1 <- cross.spectrum(st1, x, st1, x, omega)
 #   omega         -> angular frequency grid
 # Result is typically complex-valued as a function of ω
 
+
+cross_spectrum_f <- function(f, t1, x1, t2, x2, demeaned=FALSE, standardized=FALSE) {
+  omega <- 2*pi*f
+  cross.spectrum(t1, x1, t2, x2, omega, demeaned=demeaned, standardized=standardized)
+}
+
+
 Ix <- integrate(
-  cross.spectrum,
+  cross_spectrum_f,
   lower = f.min,
   upper = f.max,
   t1    = st1, x1 = x,
@@ -142,7 +149,7 @@ sx2 <- cross.spectrum(st2, y, st2, y, omega)
 # sx2: cross-spectrum of series 2 with itself (auto-spectrum for y)
 
 Iy <- integrate(
-  cross.spectrum,
+  cross_spectrum_f,
   lower = f.min,
   upper = f.max,
   t1    = st2, x1 = y,
@@ -163,11 +170,13 @@ f.max.xy <- min(f.max, f.max)
 # (You could simplify to f.max.xy <- f.max.)
 
 Ixy <- integrate(
-  cross.spectrum,
+  cross_spectrum_f,
   lower = f.min,
   upper = f.max.xy,
   t1    = st1, x1 = x,   # first series (times st1, data x)
-  t2    = st2, x2 = y    # second series (times st2, data y)
+  t2    = st2, x2 = y,    # second series (times st2, data y)
+stop.on.error = FALSE, 
+subdivisions=4000, rel.tol=1e-8, abs.tol=1e-8,	
 )$value
 # Ixy: integral of the cross-spectrum between series 1 and 2:
 #   Ixy = ∫_{f_min}^{f_max_xy} S_xy(f) df

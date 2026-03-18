@@ -318,7 +318,18 @@ def _rscript_integrate_cospec(
         }}
         """
 
-        proc = subprocess.run([rscript_exe, "-e", r_code], capture_output=True, text=True)
+        r_file = td / "script.R"
+        r_file.write_text(r_code)
+
+        proc = subprocess.run(
+            [rscript_exe, str(r_file)],
+            capture_output=True,
+            text=True
+)
+
+
+        #proc = subprocess.run([rscript_exe, "-e", r_code], capture_output=True, text=True)
+        
         if proc.returncode != 0:
             raise RuntimeError(
                 "Rscript failed.\n"

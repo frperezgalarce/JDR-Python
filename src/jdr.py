@@ -56,13 +56,14 @@ def jdr_parallel(file1, file2, alpha=0.5, delta_f=0.001, n_jobs=3):
 
     J = beta * (Ix + Iy - 2.0 * Ixy) / (2.0 * np.pi)
 
+    '''
     print("\nResults:")
     print(file1, file2)
     print(f"Ix  = {Ix}")
     print(f"Iy  = {Iy}")
     print(f"Ixy = {Ixy}")
     print(f"J   = {J}")
-
+    ''' 
     return J
 
 

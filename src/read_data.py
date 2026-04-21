@@ -1,9 +1,10 @@
 import pandas as pd
 import numpy as np
 
-def read_ogle_dat(path: str) -> pd.DataFrame:
+
+def read_ogle_dat(path: str, fixed_length: int = 200) -> pd.DataFrame:
     """
-    Read an OGLE-style .dat light curve.
+    Read an OGLE-style .dat light curve and interpolate it to fixed_length points.
 
     Expected formats:
       - 2 columns: time, mag
@@ -33,10 +34,20 @@ def read_ogle_dat(path: str) -> pd.DataFrame:
             "Expected 2 or 3 (time, mag [, mag_err])."
         )
 
-    # Enforce numeric dtype and drop invalid rows
     for c in df.columns:
         df[c] = pd.to_numeric(df[c], errors="coerce")
 
-    df = df.dropna().reset_index(drop=True)
+    df = df.dropna().sort_values("time").reset_index(drop=True)
 
-    return df
+    if len(df) < 2:
+        raise ValueError(f"{path}: not enough valid points to resample.")
+
+    new_time = np.linspace(df["time"].min(), df["time"].max(), fixed_length)
+
+    out = {"time": new_time}
+    out["mag"] = np.interp(new_time, df["time"], df["mag"])
+
+    if "mag_err" in df.columns:
+        out["mag_err"] = np.interp(new_time, df["time"], df["mag_err"])
+
+    return pd.DataFrame(out)

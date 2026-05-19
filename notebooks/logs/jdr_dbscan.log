@@ -1,0 +1,120 @@
+2026-05-18 16:04:36,066 | INFO | Found 30 files
+2026-05-18 16:04:36,066 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00001.dat
+2026-05-18 16:04:36,124 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00001.dat | period=0.732637
+2026-05-18 16:04:36,124 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00002.dat
+2026-05-18 16:04:36,147 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00002.dat | period=0.014280
+2026-05-18 16:04:36,147 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00003.dat
+2026-05-18 16:04:36,167 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00003.dat | period=0.515490
+2026-05-18 16:04:36,167 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00004.dat
+2026-05-18 16:04:36,189 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00004.dat | period=0.651498
+2026-05-18 16:04:36,189 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00005.dat
+2026-05-18 16:04:36,210 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00005.dat | period=0.043367
+2026-05-18 16:04:36,210 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00006.dat
+2026-05-18 16:04:36,231 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00006.dat | period=0.921705
+2026-05-18 16:04:36,231 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00007.dat
+2026-05-18 16:04:36,251 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00007.dat | period=0.207050
+2026-05-18 16:04:36,252 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00008.dat
+2026-05-18 16:04:36,272 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00008.dat | period=0.534786
+2026-05-18 16:04:36,272 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00009.dat
+2026-05-18 16:04:36,293 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00009.dat | period=0.604260
+2026-05-18 16:04:36,293 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00010.dat
+2026-05-18 16:04:36,314 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00010.dat | period=1.739216
+2026-05-18 16:04:36,314 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00011.dat
+2026-05-18 16:04:36,335 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00011.dat | period=0.793690
+2026-05-18 16:04:36,335 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00012.dat
+2026-05-18 16:04:36,355 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00012.dat | period=0.254142
+2026-05-18 16:04:36,356 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00013.dat
+2026-05-18 16:04:36,376 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00013.dat | period=0.044805
+2026-05-18 16:04:36,376 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00014.dat
+2026-05-18 16:04:36,399 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00014.dat | period=0.398426
+2026-05-18 16:04:36,399 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00015.dat
+2026-05-18 16:04:36,420 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00015.dat | period=0.024926
+2026-05-18 16:04:36,420 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00016.dat
+2026-05-18 16:04:36,442 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00016.dat | period=0.025302
+2026-05-18 16:04:36,442 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00017.dat
+2026-05-18 16:04:36,463 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00017.dat | period=0.420189
+2026-05-18 16:04:36,463 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00018.dat
+2026-05-18 16:04:36,484 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00018.dat | period=0.275876
+2026-05-18 16:04:36,484 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00019.dat
+2026-05-18 16:04:36,507 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00019.dat | period=0.343660
+2026-05-18 16:04:36,507 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00020.dat
+2026-05-18 16:04:36,528 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00020.dat | period=0.617315
+2026-05-18 16:04:36,528 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00021.dat
+2026-05-18 16:04:36,554 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00021.dat | period=0.328424
+2026-05-18 16:04:36,554 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00022.dat
+2026-05-18 16:04:36,581 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00022.dat | period=0.238391
+2026-05-18 16:04:36,582 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00023.dat
+2026-05-18 16:04:36,605 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00023.dat | period=0.359084
+2026-05-18 16:04:36,605 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00024.dat
+2026-05-18 16:04:36,627 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00024.dat | period=0.249700
+2026-05-18 16:04:36,627 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00025.dat
+2026-05-18 16:04:36,655 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00025.dat | period=0.029435
+2026-05-18 16:04:36,655 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00026.dat
+2026-05-18 16:04:36,681 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00026.dat | period=0.017503
+2026-05-18 16:04:36,681 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00027.dat
+2026-05-18 16:04:36,705 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00027.dat | period=0.046546
+2026-05-18 16:04:36,705 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00028.dat
+2026-05-18 16:04:36,730 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00028.dat | period=0.220275
+2026-05-18 16:04:36,730 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00029.dat
+2026-05-18 16:04:36,752 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00029.dat | period=0.371076
+2026-05-18 16:04:36,752 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00030.dat
+2026-05-18 16:04:36,774 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00030.dat | period=0.364982
+2026-05-18 16:04:36,774 | INFO | Created 30 folded files
+2026-05-18 16:04:36,774 | INFO | First folded file: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00001.dat
+2026-05-18 16:04:36,774 | INFO | Building JDR distance matrix...
+2026-05-18 16:05:46,841 | INFO | Found 5 files
+2026-05-18 16:05:46,842 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00001.dat
+2026-05-18 16:05:46,898 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00001.dat | period=0.732637
+2026-05-18 16:05:46,898 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00002.dat
+2026-05-18 16:05:46,918 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00002.dat | period=0.014280
+2026-05-18 16:05:46,918 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00003.dat
+2026-05-18 16:05:46,938 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00003.dat | period=0.515490
+2026-05-18 16:05:46,939 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00004.dat
+2026-05-18 16:05:46,959 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00004.dat | period=0.651498
+2026-05-18 16:05:46,959 | INFO | Processing file: ../data/OGLE-BLG-RRLYR-00005.dat
+2026-05-18 16:05:46,979 | INFO | Folded light curve saved: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00005.dat | period=0.043367
+2026-05-18 16:05:46,979 | INFO | Created 5 folded files
+2026-05-18 16:05:46,979 | INFO | First folded file: ../data/folded_rrlyr/OGLE-BLG-RRLYR-00001.dat
+2026-05-18 16:05:46,979 | INFO | Building JDR distance matrix...
+2026-05-18 16:07:32,959 | INFO | Distance matrix computed successfully
+2026-05-18 16:07:32,960 | INFO | Saved distance matrix to D_folded.npy
+2026-05-18 16:07:32,960 | INFO | Loaded distance matrix from D_folded.npy
+2026-05-18 16:07:32,961 | INFO | Starting DBSCAN parameter sweep
+2026-05-18 16:07:32,961 | INFO | eps=0.0100, min_samples=2, clusters=0, noise=5
+2026-05-18 16:07:32,961 | INFO | eps=0.0100, min_samples=3, clusters=0, noise=5
+2026-05-18 16:07:32,961 | INFO | eps=0.0100, min_samples=4, clusters=0, noise=5
+2026-05-18 16:07:32,961 | INFO | eps=0.1200, min_samples=2, clusters=0, noise=5
+2026-05-18 16:07:32,962 | INFO | eps=0.1200, min_samples=3, clusters=0, noise=5
+2026-05-18 16:07:32,962 | INFO | eps=0.1200, min_samples=4, clusters=0, noise=5
+2026-05-18 16:07:32,962 | INFO | eps=0.2300, min_samples=2, clusters=0, noise=5
+2026-05-18 16:07:32,962 | INFO | eps=0.2300, min_samples=3, clusters=0, noise=5
+2026-05-18 16:07:32,962 | INFO | eps=0.2300, min_samples=4, clusters=0, noise=5
+2026-05-18 16:07:32,962 | INFO | eps=0.3400, min_samples=2, clusters=0, noise=5
+2026-05-18 16:07:32,962 | INFO | eps=0.3400, min_samples=3, clusters=0, noise=5
+2026-05-18 16:07:32,963 | INFO | eps=0.3400, min_samples=4, clusters=0, noise=5
+2026-05-18 16:07:32,963 | INFO | eps=0.4500, min_samples=2, clusters=0, noise=5
+2026-05-18 16:07:32,963 | INFO | eps=0.4500, min_samples=3, clusters=0, noise=5
+2026-05-18 16:07:32,963 | INFO | eps=0.4500, min_samples=4, clusters=0, noise=5
+2026-05-18 16:07:32,963 | INFO | eps=0.5600, min_samples=2, clusters=0, noise=5
+2026-05-18 16:07:32,963 | INFO | eps=0.5600, min_samples=3, clusters=0, noise=5
+2026-05-18 16:07:32,963 | INFO | eps=0.5600, min_samples=4, clusters=0, noise=5
+2026-05-18 16:07:32,963 | INFO | eps=0.6700, min_samples=2, clusters=0, noise=5
+2026-05-18 16:07:32,964 | INFO | eps=0.6700, min_samples=3, clusters=0, noise=5
+2026-05-18 16:07:32,964 | INFO | eps=0.6700, min_samples=4, clusters=0, noise=5
+2026-05-18 16:07:32,964 | INFO | eps=0.7800, min_samples=2, clusters=0, noise=5
+2026-05-18 16:07:32,964 | INFO | eps=0.7800, min_samples=3, clusters=0, noise=5
+2026-05-18 16:07:32,964 | INFO | eps=0.7800, min_samples=4, clusters=0, noise=5
+2026-05-18 16:07:32,964 | INFO | eps=0.8900, min_samples=2, clusters=0, noise=5
+2026-05-18 16:07:32,964 | INFO | eps=0.8900, min_samples=3, clusters=0, noise=5
+2026-05-18 16:07:32,964 | INFO | eps=0.8900, min_samples=4, clusters=0, noise=5
+2026-05-18 16:07:32,965 | INFO | eps=1.0000, min_samples=2, clusters=0, noise=5
+2026-05-18 16:07:32,965 | INFO | eps=1.0000, min_samples=3, clusters=0, noise=5
+2026-05-18 16:07:32,965 | INFO | eps=1.0000, min_samples=4, clusters=0, noise=5
+2026-05-18 16:07:32,965 | INFO | Running final DBSCAN clustering
+2026-05-18 16:07:32,965 | INFO | Labels: [-1 -1 -1 -1 -1]
+2026-05-18 16:07:32,965 | INFO | Number of clusters: 0
+2026-05-18 16:07:32,965 | INFO | Number of noise points: 5
+2026-05-18 16:07:32,965 | INFO | Clusters: []
+2026-05-18 16:07:33,097 | INFO | Metadata file loaded successfully
+2026-05-18 16:07:33,097 | INFO | Files in each cluster:
+2026-05-18 16:07:33,097 | INFO | Execution completed successfully

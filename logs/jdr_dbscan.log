@@ -1,0 +1,169 @@
+2026-05-18 18:15:01,183 | INFO | Found 0 files
+2026-05-18 18:15:01,183 | INFO | Created 0 folded files
+2026-05-18 18:15:01,183 | INFO | First folded file: None
+2026-05-18 18:15:01,184 | INFO | Building JDR distance matrix...
+2026-05-18 18:15:01,184 | INFO | Distance matrix computed successfully
+2026-05-18 18:15:01,184 | INFO | Saved distance matrix to D_folded.npy
+2026-05-18 18:15:01,184 | INFO | Loaded distance matrix from D_folded.npy
+2026-05-18 18:15:01,184 | INFO | Starting DBSCAN parameter sweep
+2026-05-18 18:15:01,184 | INFO | eps=0.0100, min_samples=2, clusters=0, noise=0
+2026-05-18 18:15:01,185 | INFO | eps=0.0100, min_samples=3, clusters=0, noise=0
+2026-05-18 18:15:01,185 | INFO | eps=0.0100, min_samples=4, clusters=0, noise=0
+2026-05-18 18:15:01,185 | INFO | eps=0.1200, min_samples=2, clusters=0, noise=0
+2026-05-18 18:15:01,185 | INFO | eps=0.1200, min_samples=3, clusters=0, noise=0
+2026-05-18 18:15:01,185 | INFO | eps=0.1200, min_samples=4, clusters=0, noise=0
+2026-05-18 18:15:01,185 | INFO | eps=0.2300, min_samples=2, clusters=0, noise=0
+2026-05-18 18:15:01,185 | INFO | eps=0.2300, min_samples=3, clusters=0, noise=0
+2026-05-18 18:15:01,185 | INFO | eps=0.2300, min_samples=4, clusters=0, noise=0
+2026-05-18 18:15:01,185 | INFO | eps=0.3400, min_samples=2, clusters=0, noise=0
+2026-05-18 18:15:01,186 | INFO | eps=0.3400, min_samples=3, clusters=0, noise=0
+2026-05-18 18:15:01,186 | INFO | eps=0.3400, min_samples=4, clusters=0, noise=0
+2026-05-18 18:15:01,186 | INFO | eps=0.4500, min_samples=2, clusters=0, noise=0
+2026-05-18 18:15:01,186 | INFO | eps=0.4500, min_samples=3, clusters=0, noise=0
+2026-05-18 18:15:01,186 | INFO | eps=0.4500, min_samples=4, clusters=0, noise=0
+2026-05-18 18:15:01,186 | INFO | eps=0.5600, min_samples=2, clusters=0, noise=0
+2026-05-18 18:15:01,186 | INFO | eps=0.5600, min_samples=3, clusters=0, noise=0
+2026-05-18 18:15:01,186 | INFO | eps=0.5600, min_samples=4, clusters=0, noise=0
+2026-05-18 18:15:01,186 | INFO | eps=0.6700, min_samples=2, clusters=0, noise=0
+2026-05-18 18:15:01,186 | INFO | eps=0.6700, min_samples=3, clusters=0, noise=0
+2026-05-18 18:15:01,187 | INFO | eps=0.6700, min_samples=4, clusters=0, noise=0
+2026-05-18 18:15:01,187 | INFO | eps=0.7800, min_samples=2, clusters=0, noise=0
+2026-05-18 18:15:01,187 | INFO | eps=0.7800, min_samples=3, clusters=0, noise=0
+2026-05-18 18:15:01,187 | INFO | eps=0.7800, min_samples=4, clusters=0, noise=0
+2026-05-18 18:15:01,187 | INFO | eps=0.8900, min_samples=2, clusters=0, noise=0
+2026-05-18 18:15:01,187 | INFO | eps=0.8900, min_samples=3, clusters=0, noise=0
+2026-05-18 18:15:01,187 | INFO | eps=0.8900, min_samples=4, clusters=0, noise=0
+2026-05-18 18:15:01,187 | INFO | eps=1.0000, min_samples=2, clusters=0, noise=0
+2026-05-18 18:15:01,187 | INFO | eps=1.0000, min_samples=3, clusters=0, noise=0
+2026-05-18 18:15:01,187 | INFO | eps=1.0000, min_samples=4, clusters=0, noise=0
+2026-05-18 18:15:01,187 | INFO | Running final DBSCAN clustering
+2026-05-18 18:15:01,188 | INFO | Labels: []
+2026-05-18 18:15:01,188 | INFO | Number of clusters: 0
+2026-05-18 18:15:01,188 | INFO | Number of noise points: 0
+2026-05-18 18:15:01,188 | INFO | Clusters: []
+2026-05-18 18:16:33,121 | INFO | Found 5 files
+2026-05-18 18:16:33,122 | INFO | Processing file: data/OGLE-BLG-RRLYR-00001.dat
+2026-05-18 18:16:33,179 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00001.dat | period=0.732637
+2026-05-18 18:16:33,179 | INFO | Processing file: data/OGLE-BLG-RRLYR-00002.dat
+2026-05-18 18:16:33,199 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00002.dat | period=0.014280
+2026-05-18 18:16:33,199 | INFO | Processing file: data/OGLE-BLG-RRLYR-00003.dat
+2026-05-18 18:16:33,218 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00003.dat | period=0.515490
+2026-05-18 18:16:33,218 | INFO | Processing file: data/OGLE-BLG-RRLYR-00004.dat
+2026-05-18 18:16:33,237 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00004.dat | period=0.651498
+2026-05-18 18:16:33,237 | INFO | Processing file: data/OGLE-BLG-RRLYR-00005.dat
+2026-05-18 18:16:33,257 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00005.dat | period=0.043367
+2026-05-18 18:16:33,257 | INFO | Created 5 folded files
+2026-05-18 18:16:33,257 | INFO | First folded file: data/folded_rrlyr/OGLE-BLG-RRLYR-00001.dat
+2026-05-18 18:16:33,257 | INFO | Building JDR distance matrix...
+2026-05-19 11:25:42,716 | INFO | Found 5 files
+2026-05-19 11:25:42,717 | INFO | Processing file: data/OGLE-BLG-RRLYR-00001.dat
+2026-05-19 11:25:42,739 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00001.dat | period=0.732637
+2026-05-19 11:25:42,739 | INFO | Processing file: data/OGLE-BLG-RRLYR-00002.dat
+2026-05-19 11:25:42,802 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00002.dat | period=0.014280
+2026-05-19 11:25:42,802 | INFO | Processing file: data/OGLE-BLG-RRLYR-00003.dat
+2026-05-19 11:25:42,821 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00003.dat | period=0.515490
+2026-05-19 11:25:42,821 | INFO | Processing file: data/OGLE-BLG-RRLYR-00004.dat
+2026-05-19 11:25:42,841 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00004.dat | period=0.651498
+2026-05-19 11:25:42,841 | INFO | Processing file: data/OGLE-BLG-RRLYR-00005.dat
+2026-05-19 11:25:42,863 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00005.dat | period=0.043367
+2026-05-19 11:25:42,863 | INFO | Created 5 folded files
+2026-05-19 11:25:42,863 | INFO | First folded file: data/folded_rrlyr/OGLE-BLG-RRLYR-00001.dat
+2026-05-19 11:25:42,863 | INFO | Building JDR distance matrix...
+2026-05-19 11:27:29,869 | INFO | Distance matrix computed successfully
+2026-05-19 11:27:29,870 | INFO | Saved distance matrix to D_folded.npy
+2026-05-19 11:27:29,870 | INFO | Loaded distance matrix from D_folded.npy
+2026-05-19 11:27:29,870 | INFO | Starting DBSCAN parameter sweep
+2026-05-19 11:27:29,871 | INFO | eps=0.0100, min_samples=2, clusters=0, noise=5
+2026-05-19 11:27:29,871 | INFO | eps=0.0100, min_samples=3, clusters=0, noise=5
+2026-05-19 11:27:29,871 | INFO | eps=0.0100, min_samples=4, clusters=0, noise=5
+2026-05-19 11:27:29,871 | INFO | eps=0.1200, min_samples=2, clusters=0, noise=5
+2026-05-19 11:27:29,871 | INFO | eps=0.1200, min_samples=3, clusters=0, noise=5
+2026-05-19 11:27:29,871 | INFO | eps=0.1200, min_samples=4, clusters=0, noise=5
+2026-05-19 11:27:29,872 | INFO | eps=0.2300, min_samples=2, clusters=0, noise=5
+2026-05-19 11:27:29,872 | INFO | eps=0.2300, min_samples=3, clusters=0, noise=5
+2026-05-19 11:27:29,872 | INFO | eps=0.2300, min_samples=4, clusters=0, noise=5
+2026-05-19 11:27:29,872 | INFO | eps=0.3400, min_samples=2, clusters=0, noise=5
+2026-05-19 11:27:29,872 | INFO | eps=0.3400, min_samples=3, clusters=0, noise=5
+2026-05-19 11:27:29,872 | INFO | eps=0.3400, min_samples=4, clusters=0, noise=5
+2026-05-19 11:27:29,872 | INFO | eps=0.4500, min_samples=2, clusters=0, noise=5
+2026-05-19 11:27:29,872 | INFO | eps=0.4500, min_samples=3, clusters=0, noise=5
+2026-05-19 11:27:29,873 | INFO | eps=0.4500, min_samples=4, clusters=0, noise=5
+2026-05-19 11:27:29,873 | INFO | eps=0.5600, min_samples=2, clusters=0, noise=5
+2026-05-19 11:27:29,873 | INFO | eps=0.5600, min_samples=3, clusters=0, noise=5
+2026-05-19 11:27:29,873 | INFO | eps=0.5600, min_samples=4, clusters=0, noise=5
+2026-05-19 11:27:29,873 | INFO | eps=0.6700, min_samples=2, clusters=0, noise=5
+2026-05-19 11:27:29,873 | INFO | eps=0.6700, min_samples=3, clusters=0, noise=5
+2026-05-19 11:27:29,873 | INFO | eps=0.6700, min_samples=4, clusters=0, noise=5
+2026-05-19 11:27:29,873 | INFO | eps=0.7800, min_samples=2, clusters=0, noise=5
+2026-05-19 11:27:29,874 | INFO | eps=0.7800, min_samples=3, clusters=0, noise=5
+2026-05-19 11:27:29,874 | INFO | eps=0.7800, min_samples=4, clusters=0, noise=5
+2026-05-19 11:27:29,874 | INFO | eps=0.8900, min_samples=2, clusters=0, noise=5
+2026-05-19 11:27:29,874 | INFO | eps=0.8900, min_samples=3, clusters=0, noise=5
+2026-05-19 11:27:29,874 | INFO | eps=0.8900, min_samples=4, clusters=0, noise=5
+2026-05-19 11:27:29,874 | INFO | eps=1.0000, min_samples=2, clusters=0, noise=5
+2026-05-19 11:27:29,874 | INFO | eps=1.0000, min_samples=3, clusters=0, noise=5
+2026-05-19 11:27:29,874 | INFO | eps=1.0000, min_samples=4, clusters=0, noise=5
+2026-05-19 11:27:29,875 | INFO | Running final DBSCAN clustering
+2026-05-19 11:27:29,875 | INFO | Labels: [-1 -1 -1 -1 -1]
+2026-05-19 11:27:29,875 | INFO | Number of clusters: 0
+2026-05-19 11:27:29,875 | INFO | Number of noise points: 5
+2026-05-19 11:27:29,875 | INFO | Clusters: []
+2026-05-19 11:27:30,006 | INFO | Metadata file loaded successfully
+2026-05-19 11:27:30,007 | INFO | Files in each cluster:
+2026-05-19 11:27:30,007 | INFO | Execution completed successfully
+2026-05-19 11:27:48,736 | INFO | Found 5 files
+2026-05-19 11:27:48,736 | INFO | Processing file: data/OGLE-BLG-RRLYR-00001.dat
+2026-05-19 11:27:48,793 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00001.dat | period=0.732637
+2026-05-19 11:27:48,793 | INFO | Processing file: data/OGLE-BLG-RRLYR-00002.dat
+2026-05-19 11:27:48,812 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00002.dat | period=0.014280
+2026-05-19 11:27:48,812 | INFO | Processing file: data/OGLE-BLG-RRLYR-00003.dat
+2026-05-19 11:27:48,832 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00003.dat | period=0.515490
+2026-05-19 11:27:48,832 | INFO | Processing file: data/OGLE-BLG-RRLYR-00004.dat
+2026-05-19 11:27:48,851 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00004.dat | period=0.651498
+2026-05-19 11:27:48,851 | INFO | Processing file: data/OGLE-BLG-RRLYR-00005.dat
+2026-05-19 11:27:48,870 | INFO | Folded light curve saved: data/folded_rrlyr/OGLE-BLG-RRLYR-00005.dat | period=0.043367
+2026-05-19 11:27:48,870 | INFO | Created 5 folded files
+2026-05-19 11:27:48,870 | INFO | First folded file: data/folded_rrlyr/OGLE-BLG-RRLYR-00001.dat
+2026-05-19 11:27:48,870 | INFO | Building JDR distance matrix...
+2026-05-19 11:29:33,968 | INFO | Distance matrix computed successfully
+2026-05-19 11:29:33,968 | INFO | Saved distance matrix to D_folded.npy
+2026-05-19 11:29:33,968 | INFO | Loaded distance matrix from D_folded.npy
+2026-05-19 11:29:33,969 | INFO | Starting DBSCAN parameter sweep
+2026-05-19 11:29:33,969 | INFO | eps=0.0100, min_samples=2, clusters=0, noise=5
+2026-05-19 11:29:33,969 | INFO | eps=0.0100, min_samples=3, clusters=0, noise=5
+2026-05-19 11:29:33,969 | INFO | eps=0.0100, min_samples=4, clusters=0, noise=5
+2026-05-19 11:29:33,969 | INFO | eps=0.1200, min_samples=2, clusters=0, noise=5
+2026-05-19 11:29:33,970 | INFO | eps=0.1200, min_samples=3, clusters=0, noise=5
+2026-05-19 11:29:33,970 | INFO | eps=0.1200, min_samples=4, clusters=0, noise=5
+2026-05-19 11:29:33,970 | INFO | eps=0.2300, min_samples=2, clusters=0, noise=5
+2026-05-19 11:29:33,970 | INFO | eps=0.2300, min_samples=3, clusters=0, noise=5
+2026-05-19 11:29:33,970 | INFO | eps=0.2300, min_samples=4, clusters=0, noise=5
+2026-05-19 11:29:33,970 | INFO | eps=0.3400, min_samples=2, clusters=0, noise=5
+2026-05-19 11:29:33,970 | INFO | eps=0.3400, min_samples=3, clusters=0, noise=5
+2026-05-19 11:29:33,971 | INFO | eps=0.3400, min_samples=4, clusters=0, noise=5
+2026-05-19 11:29:33,971 | INFO | eps=0.4500, min_samples=2, clusters=0, noise=5
+2026-05-19 11:29:33,971 | INFO | eps=0.4500, min_samples=3, clusters=0, noise=5
+2026-05-19 11:29:33,971 | INFO | eps=0.4500, min_samples=4, clusters=0, noise=5
+2026-05-19 11:29:33,971 | INFO | eps=0.5600, min_samples=2, clusters=0, noise=5
+2026-05-19 11:29:33,971 | INFO | eps=0.5600, min_samples=3, clusters=0, noise=5
+2026-05-19 11:29:33,971 | INFO | eps=0.5600, min_samples=4, clusters=0, noise=5
+2026-05-19 11:29:33,971 | INFO | eps=0.6700, min_samples=2, clusters=0, noise=5
+2026-05-19 11:29:33,972 | INFO | eps=0.6700, min_samples=3, clusters=0, noise=5
+2026-05-19 11:29:33,972 | INFO | eps=0.6700, min_samples=4, clusters=0, noise=5
+2026-05-19 11:29:33,972 | INFO | eps=0.7800, min_samples=2, clusters=0, noise=5
+2026-05-19 11:29:33,972 | INFO | eps=0.7800, min_samples=3, clusters=0, noise=5
+2026-05-19 11:29:33,972 | INFO | eps=0.7800, min_samples=4, clusters=0, noise=5
+2026-05-19 11:29:33,972 | INFO | eps=0.8900, min_samples=2, clusters=0, noise=5
+2026-05-19 11:29:33,972 | INFO | eps=0.8900, min_samples=3, clusters=0, noise=5
+2026-05-19 11:29:33,972 | INFO | eps=0.8900, min_samples=4, clusters=0, noise=5
+2026-05-19 11:29:33,973 | INFO | eps=1.0000, min_samples=2, clusters=0, noise=5
+2026-05-19 11:29:33,973 | INFO | eps=1.0000, min_samples=3, clusters=0, noise=5
+2026-05-19 11:29:33,973 | INFO | eps=1.0000, min_samples=4, clusters=0, noise=5
+2026-05-19 11:29:33,973 | INFO | Running final DBSCAN clustering
+2026-05-19 11:29:33,973 | INFO | Labels: [-1 -1 -1 -1 -1]
+2026-05-19 11:29:33,973 | INFO | Number of clusters: 0
+2026-05-19 11:29:33,973 | INFO | Number of noise points: 5
+2026-05-19 11:29:33,973 | INFO | Clusters: []
+2026-05-19 11:29:34,098 | INFO | Metadata file loaded successfully
+2026-05-19 11:29:34,098 | INFO | Files in each cluster:
+2026-05-19 11:29:34,098 | INFO | Execution completed successfully

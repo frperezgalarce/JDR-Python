@@ -1,7 +1,18 @@
 import numpy as np
 import random
 from typing import Callable, List, Optional, Sequence, Union
+from concurrent.futures import ProcessPoolExecutor, as_completed
+import os
 
+
+def _compute_pair(args):
+    """
+    Helper function for multiprocessing.
+    Must be defined at top level to be picklable.
+    """
+    i, j, file_i, file_j, distance_func = args
+    d = distance_func(file_i, file_j)
+    return i, j, d
 
 class JDRKMedoids:
     """
@@ -204,6 +215,73 @@ class JDRKMedoids:
             raise ValueError("D_new_to_medoids must have shape (n_new, n_clusters).")
 
         return np.argmin(D_new_to_medoids, axis=1)
+
+
+    @staticmethod
+    def build_distance_matrix_parallel(
+        files: Sequence[str],
+        distance_func: Callable[[str, str], float],
+        symmetric: bool = True,
+        verbose: bool = True,
+        n_jobs: int | None = None
+    ) -> np.ndarray:
+        """
+        Build a pairwise distance matrix from a list of files in parallel.
+
+        Parameters
+        ----------
+        files : sequence of str
+            Paths to light-curve files.
+        distance_func : callable
+            Function like jdr(file1, file2).
+        symmetric : bool, default=True
+            Whether distance is symmetric.
+        verbose : bool, default=True
+            Whether to print progress.
+        n_jobs : int or None, default=None
+            Number of parallel workers. If None, uses all available CPUs.
+
+        Returns
+        -------
+        D : np.ndarray of shape (n, n)
+            Pairwise distance matrix.
+        """
+
+        n = len(files)
+        D = np.zeros((n, n), dtype=float)
+
+        if n_jobs is None:
+            n_jobs = os.cpu_count()
+
+        tasks = []
+
+        if symmetric:
+            for i in range(n):
+                for j in range(i + 1, n):
+                    tasks.append((i, j, files[i], files[j], distance_func))
+        else:
+            for i in range(n):
+                for j in range(n):
+                    if i != j:
+                        tasks.append((i, j, files[i], files[j], distance_func))
+
+        total = len(tasks)
+
+        with ProcessPoolExecutor(max_workers=n_jobs) as executor:
+            futures = [executor.submit(_compute_pair, task) for task in tasks]
+
+            for k, future in enumerate(as_completed(futures), start=1):
+                i, j, d = future.result()
+
+                D[i, j] = d
+
+                if symmetric:
+                    D[j, i] = d
+
+                if verbose and (k % 100 == 0 or k == total):
+                    print(f"Computed {k}/{total} distances")
+
+        return D
 
     @staticmethod
     def build_distance_matrix(

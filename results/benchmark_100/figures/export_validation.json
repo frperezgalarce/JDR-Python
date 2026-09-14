@@ -1,0 +1,58 @@
+[
+  {
+    "figure": "figure_1_cohort_geometry",
+    "png_pixels": [
+      4322,
+      3023
+    ],
+    "dpi": [
+      599.9988,
+      599.9988
+    ],
+    "svg_editable_text": true,
+    "pdf_embedded_truetype": true,
+    "visual_review": "passed"
+  },
+  {
+    "figure": "figure_2_model_comparison",
+    "png_pixels": [
+      4322,
+      2811
+    ],
+    "dpi": [
+      599.9988,
+      599.9988
+    ],
+    "svg_editable_text": true,
+    "pdf_embedded_truetype": true,
+    "visual_review": "passed"
+  },
+  {
+    "figure": "figure_3_cluster_composition",
+    "png_pixels": [
+      4322,
+      1606
+    ],
+    "dpi": [
+      599.9988,
+      599.9988
+    ],
+    "svg_editable_text": true,
+    "pdf_embedded_truetype": true,
+    "visual_review": "passed"
+  },
+  {
+    "figure": "figure_4_numerical_sensitivity",
+    "png_pixels": [
+      4322,
+      1535
+    ],
+    "dpi": [
+      599.9988,
+      599.9988
+    ],
+    "svg_editable_text": true,
+    "pdf_embedded_truetype": true,
+    "visual_review": "passed"
+  }
+]

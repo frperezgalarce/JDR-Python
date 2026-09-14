@@ -1,0 +1,533 @@
+{
+  "scope": "Small in-sample smoke validation; not a generalization or improvement claim.",
+  "seed": 42,
+  "n_files": 18,
+  "object_ids": [
+    "OGLE-BLG-RRLYR-00014",
+    "OGLE-BLG-RRLYR-00044",
+    "OGLE-BLG-RRLYR-00039",
+    "OGLE-LMC-RRLYR-00004",
+    "OGLE-BLG-RRLYR-00024",
+    "OGLE-GD-RRLYR-0012",
+    "OGLE-GD-RRLYR-0042",
+    "OGLE-BLG-RRLYR-00025",
+    "OGLE-GD-RRLYR-0037",
+    "OGLE-BLG-RRLYR-00027",
+    "OGLE-BLG-RRLYR-00048",
+    "OGLE-GD-RRLYR-0021",
+    "OGLE-GD-RRLYR-0006",
+    "OGLE-GD-RRLYR-0033",
+    "OGLE-BLG-RRLYR-00002",
+    "OGLE-BLG-RRLYR-00021",
+    "OGLE-BLG-RRLYR-00037",
+    "OGLE-GD-RRLYR-0023"
+  ],
+  "true_labels": [
+    "RRab",
+    "RRc",
+    "RRd",
+    "RRab",
+    "RRc",
+    "RRab",
+    "RRc",
+    "RRab",
+    "RRc",
+    "RRab",
+    "RRc",
+    "RRab",
+    "RRc",
+    "RRab",
+    "RRc",
+    "RRab",
+    "RRc",
+    "RRab"
+  ],
+  "config": {
+    "f_min": 0.5,
+    "f_max": 6.0,
+    "n_frequencies": 1025,
+    "alpha": 0.5,
+    "convention": "standard",
+    "time_origin": 0.0,
+    "use_errors": false
+  },
+  "fold_config": {
+    "min_period": 0.2,
+    "max_period": 2.0,
+    "samples_per_peak": 5,
+    "harmonics": 4,
+    "phase_points": 256,
+    "max_frequencies": 500000
+  },
+  "fold_diagnostics": {
+    "OGLE-BLG-RRLYR-00014": {
+      "period": 0.39847787144274843,
+      "weighted_residual": 0.044524352513419845,
+      "phase_shift": 0.807373046875,
+      "observations": 101,
+      "period_grid_size": 20976,
+      "candidate_periods": [
+        0.39847787144274843,
+        0.39847705611186407,
+        0.39847665092552764,
+        0.7969533027449494,
+        0.3984758661803672
+      ],
+      "amplitude": 0.5216841148822837,
+      "harmonics": 4,
+      "bic": -734.2595852248236
+    },
+    "OGLE-BLG-RRLYR-00044": {
+      "period": 0.2761722096351158,
+      "weighted_residual": 0.008910650082089909,
+      "phase_shift": 0.8720703125,
+      "observations": 111,
+      "period_grid_size": 20975,
+      "candidate_periods": [
+        0.2761722096351158,
+        0.2761725727677817,
+        0.2761728898106082,
+        0.5523459193030044,
+        0.27617311357438595
+      ],
+      "amplitude": 0.2858459960491597,
+      "harmonics": 4,
+      "bic": -999.6389471246436
+    },
+    "OGLE-BLG-RRLYR-00039": {
+      "period": 0.3582778031532497,
+      "weighted_residual": 0.06441591507740406,
+      "phase_shift": 0.146484375,
+      "observations": 84,
+      "period_grid_size": 22732,
+      "candidate_periods": [
+        0.3582778031532497,
+        0.3582767562554804,
+        0.35827668771466,
+        0.7165569573101924,
+        0.716554664567003
+      ],
+      "amplitude": 0.2793498437120743,
+      "harmonics": 2,
+      "bic": -575.9648523310211
+    },
+    "OGLE-LMC-RRLYR-00004": {
+      "period": 0.5123805768115642,
+      "weighted_residual": 0.5935223994162246,
+      "phase_shift": 0.40673828125,
+      "observations": 407,
+      "period_grid_size": 50243,
+      "candidate_periods": [
+        0.5123805768115642,
+        0.5123807732947905,
+        0.5123816030014677,
+        1.0247637735555408,
+        0.5123808198800482
+      ],
+      "amplitude": 0.5827456834298879,
+      "harmonics": 4,
+      "bic": -2597.8227266600434
+    },
+    "OGLE-BLG-RRLYR-00024": {
+      "period": 0.33312734632831187,
+      "weighted_residual": 0.006904978840710202,
+      "phase_shift": 0.31640625,
+      "observations": 112,
+      "period_grid_size": 20976,
+      "candidate_periods": [
+        0.33312734632831187,
+        0.33312697755735937,
+        0.3331279061948921,
+        0.666255948587646,
+        0.33312759401860426
+      ],
+      "amplitude": 0.2908455206728373,
+      "harmonics": 4,
+      "bic": -1038.544291196603
+    },
+    "OGLE-GD-RRLYR-0012": {
+      "period": 0.5493319632949202,
+      "weighted_residual": 0.8084272666545642,
+      "phase_shift": 0.352783203125,
+      "observations": 1767,
+      "period_grid_size": 26102,
+      "candidate_periods": [
+        0.5493319632949202,
+        0.5493318437905987,
+        0.549330960846337,
+        1.0986621219035968,
+        0.3542160897838752
+      ],
+      "amplitude": 0.7787125256128817,
+      "harmonics": 4,
+      "bic": -13512.934881972411
+    },
+    "OGLE-GD-RRLYR-0042": {
+      "period": 0.31124276090664804,
+      "weighted_residual": 0.4773601721281525,
+      "phase_shift": 0.42529296875,
+      "observations": 2310,
+      "period_grid_size": 51338,
+      "candidate_periods": [
+        0.31124276090664804,
+        0.3112427682873721,
+        0.31124279364243423,
+        0.6224855683548984,
+        0.31124277094849273
+      ],
+      "amplitude": 0.26529185554768375,
+      "harmonics": 4,
+      "bic": -19521.714476963432
+    },
+    "OGLE-BLG-RRLYR-00025": {
+      "period": 0.5498342238776596,
+      "weighted_residual": 0.028298890478062035,
+      "phase_shift": 0.843994140625,
+      "observations": 113,
+      "period_grid_size": 20976,
+      "candidate_periods": [
+        0.5498342238776596,
+        0.5498333891635436,
+        0.5498309438237735,
+        1.099661485851131,
+        0.5498353082241664
+      ],
+      "amplitude": 0.6425042290050484,
+      "harmonics": 4,
+      "bic": -889.758338260449
+    },
+    "OGLE-GD-RRLYR-0037": {
+      "period": 0.22896801015564416,
+      "weighted_residual": 0.14887529844774672,
+      "phase_shift": 0.354248046875,
+      "observations": 2330,
+      "period_grid_size": 51338,
+      "candidate_periods": [
+        0.22896801015564416,
+        0.22896800783109317,
+        0.2289680041547287,
+        0.45793601482208185,
+        0.228968021318699
+      ],
+      "amplitude": 0.25085871974368956,
+      "harmonics": 4,
+      "bic": -22426.232382647606
+    },
+    "OGLE-BLG-RRLYR-00027": {
+      "period": 0.4783158096534005,
+      "weighted_residual": 0.12636358621973215,
+      "phase_shift": 0.61328125,
+      "observations": 113,
+      "period_grid_size": 20976,
+      "candidate_periods": [
+        0.4783158096534005,
+        0.47831318520363447,
+        0.4783159381403313,
+        0.9566290027260497,
+        0.4783208943936984
+      ],
+      "amplitude": 0.8387954222881611,
+      "harmonics": 4,
+      "bic": -720.6718325673978
+    },
+    "OGLE-BLG-RRLYR-00048": {
+      "period": 0.34651201817587646,
+      "weighted_residual": 0.1587748545278075,
+      "phase_shift": 0.14208984375,
+      "observations": 111,
+      "period_grid_size": 22732,
+      "candidate_periods": [
+        0.34651201817587646,
+        0.34651493004005396,
+        0.3465122456033793,
+        0.6930300874053184,
+        0.6930268897791866
+      ],
+      "amplitude": 0.26655432514047384,
+      "harmonics": 2,
+      "bic": -698.7704290733495
+    },
+    "OGLE-GD-RRLYR-0021": {
+      "period": 0.5266995739052864,
+      "weighted_residual": 0.26705727151998826,
+      "phase_shift": 0.39892578125,
+      "observations": 1673,
+      "period_grid_size": 8192,
+      "candidate_periods": [
+        0.5266995739052864,
+        0.5267009715656467,
+        0.5267059925400859,
+        1.0534123463451481,
+        0.3446926095164519
+      ],
+      "amplitude": 0.5733315684070917,
+      "harmonics": 4,
+      "bic": -14552.25622083144
+    },
+    "OGLE-GD-RRLYR-0006": {
+      "period": 0.23215481083181602,
+      "weighted_residual": 0.3538392703188789,
+      "phase_shift": 0.657958984375,
+      "observations": 1917,
+      "period_grid_size": 10887,
+      "candidate_periods": [
+        0.23215481083181602,
+        0.2321548107839975,
+        0.2321548027283228,
+        0.4643095775573751,
+        0.23215475403263253
+      ],
+      "amplitude": 0.22447766837814953,
+      "harmonics": 4,
+      "bic": -16405.68670606176
+    },
+    "OGLE-GD-RRLYR-0033": {
+      "period": 0.5624863856052399,
+      "weighted_residual": 0.6089038648796685,
+      "phase_shift": 0.53466796875,
+      "observations": 811,
+      "period_grid_size": 947,
+      "candidate_periods": [
+        0.5624863856052399,
+        0.5624863873314218,
+        0.562465597652079,
+        0.5624655981550065,
+        0.5623847078149506
+      ],
+      "amplitude": 0.5487585894235352,
+      "harmonics": 4,
+      "bic": -5767.645659897028
+    },
+    "OGLE-BLG-RRLYR-00002": {
+      "period": 0.3015330492107925,
+      "weighted_residual": 0.007188642284832438,
+      "phase_shift": 0.109130859375,
+      "observations": 108,
+      "period_grid_size": 20976,
+      "candidate_periods": [
+        0.3015330492107925,
+        0.30153366305393164,
+        0.3015345962941666,
+        0.6030686307574324,
+        0.30153606697876556
+      ],
+      "amplitude": 0.2781124909614814,
+      "harmonics": 4,
+      "bic": -991.8561798194577
+    },
+    "OGLE-BLG-RRLYR-00021": {
+      "period": 0.48968396573386785,
+      "weighted_residual": 0.00793708238728344,
+      "phase_shift": 0.703369140625,
+      "observations": 112,
+      "period_grid_size": 20976,
+      "candidate_periods": [
+        0.48968396573386785,
+        0.48968340793800536,
+        0.4896798285871647,
+        0.9793582245912898,
+        0.48967938883790146
+      ],
+      "amplitude": 0.3968476844779847,
+      "harmonics": 4,
+      "bic": -1022.9423520946899
+    },
+    "OGLE-BLG-RRLYR-00037": {
+      "period": 0.31932452249415283,
+      "weighted_residual": 0.009680747620384136,
+      "phase_shift": 0.481201171875,
+      "observations": 111,
+      "period_grid_size": 20975,
+      "candidate_periods": [
+        0.31932452249415283,
+        0.3193246786920356,
+        0.31932443558588813,
+        0.6386496358885827,
+        0.3193251193054953
+      ],
+      "amplitude": 0.2576003842678247,
+      "harmonics": 4,
+      "bic": -990.4379426678883
+    },
+    "OGLE-GD-RRLYR-0023": {
+      "period": 0.6274689760600328,
+      "weighted_residual": 4.325410002368072,
+      "phase_shift": 0.5478515625,
+      "observations": 1676,
+      "period_grid_size": 8192,
+      "candidate_periods": [
+        0.6274689760600328,
+        0.6274678131642872,
+        0.6274626007652881,
+        1.2549274088560172,
+        0.6274570890575244
+      ],
+      "amplitude": 0.3749354790506203,
+      "harmonics": 4,
+      "bic": -9914.145736620565
+    }
+  },
+  "grid_relative_max_error": 6.40066589127372e-06,
+  "second_refinement_relative_max_error": 1.6002421395158217e-06,
+  "nearest_neighbors_unchanged": true,
+  "dbscan_eps": 0.0011542937618918279,
+  "kmedoids_inertia": 0.01788235531449165,
+  "models": {
+    "kmedoids": {
+      "coverage": 1.0,
+      "n_noise": 0,
+      "n_clusters": 3,
+      "cluster_sizes": {
+        "0": 6,
+        "1": 8,
+        "2": 4
+      },
+      "purity_assigned": 0.8888888888888888,
+      "ari_all": 0.5139330126168649,
+      "ami_all": 0.5343808784526297,
+      "ari_assigned": 0.5139330126168649,
+      "class_retention": {
+        "RRab": 1.0,
+        "RRc": 1.0,
+        "RRd": 1.0
+      }
+    },
+    "dbscan": {
+      "coverage": 0.8333333333333334,
+      "n_noise": 3,
+      "n_clusters": 2,
+      "cluster_sizes": {
+        "0": 8,
+        "1": 7
+      },
+      "purity_assigned": 1.0,
+      "ari_all": 0.7517129462675802,
+      "ami_all": 0.6792208101781606,
+      "ari_assigned": 1.0,
+      "class_retention": {
+        "RRab": 0.8888888888888888,
+        "RRc": 0.875,
+        "RRd": 0.0
+      }
+    },
+    "hdbscan": {
+      "coverage": 1.0,
+      "n_noise": 0,
+      "n_clusters": 2,
+      "cluster_sizes": {
+        "0": 10,
+        "1": 8
+      },
+      "purity_assigned": 0.8888888888888888,
+      "ari_all": 0.6970818627872944,
+      "ami_all": 0.6353194877146139,
+      "ari_assigned": 0.6970818627872944,
+      "class_retention": {
+        "RRab": 1.0,
+        "RRc": 1.0,
+        "RRd": 1.0
+      }
+    },
+    "average_linkage": {
+      "coverage": 1.0,
+      "n_noise": 0,
+      "n_clusters": 3,
+      "cluster_sizes": {
+        "0": 9,
+        "1": 8,
+        "2": 1
+      },
+      "purity_assigned": 0.9444444444444444,
+      "ari_all": 0.8119733146067416,
+      "ami_all": 0.7754960042439685,
+      "ari_assigned": 0.8119733146067416,
+      "class_retention": {
+        "RRab": 1.0,
+        "RRc": 1.0,
+        "RRd": 1.0
+      }
+    }
+  },
+  "labels": {
+    "kmedoids": [
+      2,
+      2,
+      1,
+      2,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      2,
+      1,
+      0,
+      1,
+      0
+    ],
+    "dbscan": [
+      0,
+      -1,
+      -1,
+      -1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "hdbscan": [
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "average_linkage": [
+      0,
+      2,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+model,cluster,catalog_type,count
+K-medoids,0,RRab,319
+K-medoids,1,RRab,71
+K-medoids,2,RRab,4
+K-medoids,0,RRc,0
+K-medoids,1,RRc,29
+K-medoids,2,RRc,72
+K-medoids,0,RRd,0
+K-medoids,1,RRd,1
+K-medoids,2,RRd,4
+K-means,0,RRab,66
+K-means,1,RRab,320
+K-means,2,RRab,8
+K-means,0,RRc,22
+K-means,1,RRc,0
+K-means,2,RRc,79
+K-means,0,RRd,0
+K-means,1,RRd,0
+K-means,2,RRd,5
+Average linkage,0,RRab,316
+Average linkage,1,RRab,8
+Average linkage,2,RRab,70
+Average linkage,0,RRc,0
+Average linkage,1,RRc,79
+Average linkage,2,RRc,22
+Average linkage,0,RRd,0
+Average linkage,1,RRd,5
+Average linkage,2,RRd,0
+DBSCAN,0,RRab,276
+DBSCAN,1,RRab,9
+DBSCAN,2,RRab,0
+DBSCAN,3,RRab,1
+DBSCAN,4,RRab,2
+DBSCAN,5,RRab,18
+DBSCAN,6,RRab,0
+DBSCAN,7,RRab,11
+DBSCAN,-1,RRab,77
+DBSCAN,0,RRc,0
+DBSCAN,1,RRc,1
+DBSCAN,2,RRc,13
+DBSCAN,3,RRc,34
+DBSCAN,4,RRc,26
+DBSCAN,5,RRc,0
+DBSCAN,6,RRc,7
+DBSCAN,7,RRc,0
+DBSCAN,-1,RRc,20
+DBSCAN,0,RRd,0
+DBSCAN,1,RRd,0
+DBSCAN,2,RRd,0
+DBSCAN,3,RRd,2
+DBSCAN,4,RRd,2
+DBSCAN,5,RRd,0
+DBSCAN,6,RRd,0
+DBSCAN,7,RRd,0
+DBSCAN,-1,RRd,1
+HDBSCAN,0,RRab,0
+HDBSCAN,1,RRab,2
+HDBSCAN,2,RRab,284
+HDBSCAN,3,RRab,0
+HDBSCAN,4,RRab,8
+HDBSCAN,5,RRab,16
+HDBSCAN,6,RRab,1
+HDBSCAN,7,RRab,7
+HDBSCAN,-1,RRab,76
+HDBSCAN,0,RRc,12
+HDBSCAN,1,RRc,26
+HDBSCAN,2,RRc,0
+HDBSCAN,3,RRc,9
+HDBSCAN,4,RRc,0
+HDBSCAN,5,RRc,0
+HDBSCAN,6,RRc,34
+HDBSCAN,7,RRc,2
+HDBSCAN,-1,RRc,18
+HDBSCAN,0,RRd,0
+HDBSCAN,1,RRd,2
+HDBSCAN,2,RRd,0
+HDBSCAN,3,RRd,0
+HDBSCAN,4,RRd,0
+HDBSCAN,5,RRd,0
+HDBSCAN,6,RRd,2
+HDBSCAN,7,RRd,0
+HDBSCAN,-1,RRd,1

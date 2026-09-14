@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "fresh_kernel": true,
+  "kernel_python": "/tmp/jdr-review312/bin/python",
+  "code_cells": 14,
+  "notebook_sha256": "b55f041a5493315f73c887897d1d6c8f33697034411a94a5a862041bdd2c55be",
+  "code_cells_sha256": "cf9f4b0bd8d5f005ebba7aafa75ebf7c44b387fe78631e04d9c163dd6802334d"
+}

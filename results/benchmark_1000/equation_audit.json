@@ -1,0 +1,8 @@
+{
+  "eq1_scalar_reference_max_abs_error": 2.842170943040401e-14,
+  "literal_power_product_self_j": -422.9452256055099,
+  "literal_self_object": "OGLE-GD-RRLYR-00001",
+  "clarified_self_j": 0.0,
+  "clarification": "User approved complex-amplitude cross-spectrum. Integrate its real part. J is squared Euclidean; sqrt(J) has triangle inequality.",
+  "paper_pdf_sha256": "c91bbcc0a11ebed8051c7b98265c22db6a82c6d5f73524da2f5e60c7efbb04c9"
+}

@@ -1,0 +1,7 @@
+{
+  "independent_full_recomputations": 2,
+  "tables_identical": true,
+  "arrays_identical": true,
+  "provenance_identical": true,
+  "comparison": "Exact within the recorded environment, not promised across BLAS/platform versions."
+}

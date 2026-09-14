@@ -1,0 +1,212 @@
+{
+  "scope": "Seeded eligible OGLE Galactic Disk I-band sample; exploratory in-sample comparison, not held-out accuracy.",
+  "protocol": {
+    "version": 2,
+    "n_objects": 500,
+    "seed": 20260912,
+    "n_clusters": 3,
+    "n_init": 20,
+    "dbscan_min_samples": 5,
+    "dbscan_eps_quantile": 0.7,
+    "hdbscan_min_cluster_size": 5,
+    "hdbscan_min_samples": 5,
+    "subsamples": 30,
+    "subsample_fraction": 0.8,
+    "grid_sizes": [
+      1025,
+      2049,
+      4097
+    ],
+    "grid_rtol": 0.001,
+    "grid_atol": 1e-08,
+    "distance": "sqrt(J); common Euclidean geometry for all methods",
+    "scope": "Seeded eligible OGLE Galactic Disk I-band sample; exploratory in-sample comparison, not held-out accuracy.",
+    "fold_config": {
+      "min_period": 0.15
+    },
+    "acquisition_seed": 20260912
+  },
+  "fold_config": {
+    "min_period": 0.15,
+    "max_period": 2.0,
+    "samples_per_peak": 5,
+    "harmonics": 4,
+    "phase_points": 256,
+    "max_frequencies": 500000
+  },
+  "jdr_config": {
+    "f_min": 0.5,
+    "f_max": 6.0,
+    "n_frequencies": 4097,
+    "alpha": 0.5,
+    "convention": "standard",
+    "time_origin": 0.0,
+    "use_errors": false
+  },
+  "n_objects": 500,
+  "class_counts": {
+    "RRab": 394,
+    "RRc": 101,
+    "RRd": 5
+  },
+  "region_counts": {
+    "GD": 500
+  },
+  "majority_class_fraction": 0.788,
+  "grid_convergence": [
+    {
+      "coarse_grid": 1025,
+      "fine_grid": 2049,
+      "relative_max_error": 9.152483981375101e-06,
+      "all_pairs_close": true,
+      "neighbor_agreement": 1.0
+    },
+    {
+      "coarse_grid": 2049,
+      "fine_grid": 4097,
+      "relative_max_error": 2.2882320494712837e-06,
+      "all_pairs_close": true,
+      "neighbor_agreement": 1.0
+    }
+  ],
+  "permutation_invariance": true,
+  "fit_info": {
+    "dbscan_eps": 0.017050543113272577,
+    "medoid_indices": [
+      124,
+      160,
+      164
+    ],
+    "medoid_objective": 16.249931496825198,
+    "dbscan_reference_agreement": true
+  },
+  "models": {
+    "K-medoids": {
+      "coverage": 1.0,
+      "n_noise": 0,
+      "n_clusters": 3,
+      "cluster_sizes": {
+        "0": 319,
+        "1": 101,
+        "2": 80
+      },
+      "purity_assigned": 0.924,
+      "ari_all": 0.5423811083653733,
+      "ami_all": 0.49304252004950916,
+      "ari_assigned": 0.5423811083653733,
+      "class_retention": {
+        "RRab": 1.0,
+        "RRc": 1.0,
+        "RRd": 1.0
+      },
+      "silhouette_assigned": 0.5086045856486355,
+      "ari_region_all": null
+    },
+    "K-means": {
+      "coverage": 1.0,
+      "n_noise": 0,
+      "n_clusters": 3,
+      "cluster_sizes": {
+        "0": 88,
+        "1": 320,
+        "2": 92
+      },
+      "purity_assigned": 0.93,
+      "ari_all": 0.5513471726150804,
+      "ami_all": 0.49794001896692147,
+      "ari_assigned": 0.5513471726150804,
+      "class_retention": {
+        "RRab": 1.0,
+        "RRc": 1.0,
+        "RRd": 1.0
+      },
+      "silhouette_assigned": 0.5051417272764588,
+      "ari_region_all": null
+    },
+    "Average linkage": {
+      "coverage": 1.0,
+      "n_noise": 0,
+      "n_clusters": 3,
+      "cluster_sizes": {
+        "0": 316,
+        "1": 92,
+        "2": 92
+      },
+      "purity_assigned": 0.93,
+      "ari_all": 0.5363469310461856,
+      "ami_all": 0.4914243846346436,
+      "ari_assigned": 0.5363469310461856,
+      "class_retention": {
+        "RRab": 1.0,
+        "RRc": 1.0,
+        "RRd": 1.0
+      },
+      "silhouette_assigned": 0.49491788918260615,
+      "ari_region_all": null
+    },
+    "DBSCAN": {
+      "coverage": 0.804,
+      "n_noise": 98,
+      "n_clusters": 8,
+      "cluster_sizes": {
+        "0": 276,
+        "1": 10,
+        "2": 13,
+        "3": 37,
+        "4": 30,
+        "5": 18,
+        "6": 7,
+        "7": 11
+      },
+      "purity_assigned": 0.9800995024875622,
+      "ari_all": 0.38399411734570954,
+      "ami_all": 0.3772928747621281,
+      "ari_assigned": 0.6459535059439845,
+      "class_retention": {
+        "RRab": 0.8045685279187818,
+        "RRc": 0.801980198019802,
+        "RRd": 0.8
+      },
+      "silhouette_assigned": 0.496290593353258,
+      "ari_region_all": null
+    },
+    "HDBSCAN": {
+      "coverage": 0.81,
+      "n_noise": 95,
+      "n_clusters": 8,
+      "cluster_sizes": {
+        "0": 12,
+        "1": 30,
+        "2": 284,
+        "3": 9,
+        "4": 8,
+        "5": 16,
+        "6": 37,
+        "7": 9
+      },
+      "purity_assigned": 0.9777777777777777,
+      "ari_all": 0.4113192726981916,
+      "ami_all": 0.38855167741719543,
+      "ari_assigned": 0.6881375440827455,
+      "class_retention": {
+        "RRab": 0.8071065989847716,
+        "RRc": 0.8217821782178217,
+        "RRd": 0.8
+      },
+      "silhouette_assigned": 0.480257721180526,
+      "ari_region_all": null
+    }
+  },
+  "pca_explained_variance_ratio": [
+    0.7968608581816642,
+    0.1226494388336912
+  ],
+  "limitations": [
+    "Only 5 RRd; no reliable RRd class-level inference.",
+    "Catalog subtype and sky region are imbalanced; region agreement is descriptive, not a causal confounding test.",
+    "All-star ARI groups rejected points under the noise label; assigned-only metrics and coverage are also reported.",
+    "Subsampling refits clustering on fixed fitted curves; period/photometry uncertainty is not propagated.",
+    "No performance confidence intervals or best-model significance claims from this census.",
+    "The standard spectral representation is version 2, not a verified reproduction of an unidentified JDR paper."
+  ]
+}

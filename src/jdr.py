@@ -1,183 +1,147 @@
-from src.metrics import integrate_cross_spectrum_real
-from src.read_data import read_ogle_dat
+"""Shared-grid JDR. The returned J is a squared Euclidean dissimilarity."""
+
+from __future__ import annotations
+from concurrent.futures import ThreadPoolExecutor
+from dataclasses import asdict, dataclass
+import hashlib
+import json
+from pathlib import Path
 import numpy as np
-import warnings
-warnings.filterwarnings('ignore')
-from concurrent.futures import ProcessPoolExecutor
+from scipy.spatial.distance import pdist, squareform
+from src.metrics import spectral_coefficients
+from src.read_data import read_ogle_dat
 
 
-def _compute_Ix(args):
-    f_min, f_max, t1, x = args
-    return integrate_cross_spectrum_real(f_min, f_max, t1, x, t1, x, jacobian="df")
+@dataclass(frozen=True)
+class JDRConfig:
+    f_min: float = 0.001
+    f_max: float = 1.0
+    n_frequencies: int = 4097
+    alpha: float = 0.5
+    convention: str = "standard"
+    time_origin: float = 0.0
+    use_errors: bool = False
+
+    def __post_init__(self):
+        if not np.isfinite(
+            [self.f_min, self.f_max, self.alpha, self.time_origin]
+        ).all():
+            raise ValueError("Configuration numbers must be finite.")
+        if not 0 < self.f_min < self.f_max or not 0 < self.alpha < 1:
+            raise ValueError("Require 0 < f_min < f_max and 0 < alpha < 1.")
+        if (
+            isinstance(self.n_frequencies, bool)
+            or not isinstance(self.n_frequencies, (int, np.integer))
+            or self.n_frequencies < 3
+        ):
+            raise ValueError("n_frequencies must be an integer >= 3.")
+        if self.convention not in ("standard", "legacy"):
+            raise ValueError("convention must be standard or legacy.")
+        if self.use_errors and self.convention == "legacy":
+            raise ValueError("Legacy mode does not support errors.")
+
+    @property
+    def frequencies(self):
+        return np.linspace(self.f_min, self.f_max, self.n_frequencies)
 
 
-def _compute_Iy(args):
-    f_min, f_max, t2, y = args
-    return integrate_cross_spectrum_real(f_min, f_max, t2, y, t2, y, jacobian="df")
+def feature_vector(t, x, config=JDRConfig(), errors=None):
+    f = config.frequencies
+    a, b = spectral_coefficients(
+        np.asarray(t, dtype=np.float64) - config.time_origin,
+        x,
+        2 * np.pi * f,
+        convention=config.convention,
+        errors=errors if config.use_errors else None,
+    )
+    weights = np.full(len(f), (config.f_max - config.f_min) / (len(f) - 1))
+    weights[[0, -1]] *= 0.5
+    scale = np.sqrt(config.alpha * (1 - config.alpha) / (4 * np.pi) * weights)
+    return np.concatenate([scale * a, scale * b])
 
 
-def _compute_Ixy(args):
-    f_min, f_max, t1, x, t2, y = args
-    return integrate_cross_spectrum_real(f_min, f_max, t1, x, t2, y, jacobian="df")
+def _file_feature(args):
+    path, config = args
+    df = read_ogle_dat(path)
+    if config.use_errors and "mag_err" not in df:
+        raise ValueError(f"{path}: use_errors=True requires mag_err.")
+    return feature_vector(df.time, df.mag, config, df.get("mag_err"))
 
 
-def jdr_parallel(file1, file2, alpha=0.5, delta_f=0.001, n_jobs=3):
-
-    Irrlyr1 = read_ogle_dat(file1)
-    Irrlyr2 = read_ogle_dat(file2)
-
-    t1 = Irrlyr1.iloc[:, 0].to_numpy().astype(np.float32)
-    x = Irrlyr1.iloc[:, 1].to_numpy().astype(np.float32)
-
-    t2 = Irrlyr2.iloc[:, 0].to_numpy().astype(np.float32)
-    y = Irrlyr2.iloc[:, 1].to_numpy().astype(np.float32)
-
-    beta = alpha * (1 - alpha)
-
-    delta_t = (np.max(t1) - np.min(t1)) / len(t1)
-
-    f_min = delta_f
-    f_max = 1.0 / (2.0 * delta_t)
-
-    # Prepare arguments
-    args_Ix = (f_min, f_max, t1, x)
-    args_Iy = (f_min, f_max, t2, y)
-    args_Ixy = (f_min, f_max, t1, x, t2, y)
-
-    # Parallel execution
-    with ProcessPoolExecutor(max_workers=n_jobs) as executor:
-        futures = [
-            executor.submit(_compute_Ix, args_Ix),
-            executor.submit(_compute_Iy, args_Iy),
-            executor.submit(_compute_Ixy, args_Ixy),
-        ]
-
-        Ix, Iy, Ixy = [f.result() for f in futures]
-
-    J = beta * (Ix + Iy - 2.0 * Ixy) / (2.0 * np.pi)
-
-    '''
-    print("\nResults:")
-    print(file1, file2)
-    print(f"Ix  = {Ix}")
-    print(f"Iy  = {Iy}")
-    print(f"Ixy = {Ixy}")
-    print(f"J   = {J}")
-    ''' 
-    return J
+def build_distance_matrix(files, config=JDRConfig(), n_jobs=1):
+    """Read/transform each curve once, with one shared configuration for all pairs."""
+    files = list(files)
+    if not files:
+        raise ValueError("No light curves supplied.")
+    if (
+        isinstance(n_jobs, bool)
+        or not isinstance(n_jobs, (int, np.integer))
+        or n_jobs < 1
+    ):
+        raise ValueError("n_jobs must be a positive integer.")
+    args = [(f, config) for f in files]
+    if n_jobs == 1:
+        z = np.array([_file_feature(a) for a in args])
+    else:
+        with ThreadPoolExecutor(max_workers=n_jobs) as pool:
+            z = np.array(list(pool.map(_file_feature, args)))
+    D = squareform(pdist(z, metric="sqeuclidean"))
+    return D
 
 
+def jdr(file1, file2, alpha=0.5, delta_f=0.001, *, config=None):
+    """Pair interface. Defaults use fixed [delta_f,1] cycles/time, never pair cadence.
 
-def jdr(file1, file2, alpha=0.5, delta_f=0.001):
+    For a scientifically chosen band, pass JDRConfig explicitly. Grid resolution
+    must be checked for the observation baseline; delta_f is the lower bound.
     """
-    Compute the J-distance ratio (JDR) between two irregular time series
-    based on their cross-spectral representation.
+    cfg = config if config is not None else JDRConfig(alpha=alpha, f_min=delta_f)
+    return float(build_distance_matrix([file1, file2], cfg)[0, 1])
 
-    This function reads two time series from OGLE-like `.dat` files and
-    evaluates a distance measure derived from the integrated auto- and
-    cross-spectra over a specified frequency band.
 
-    Parameters
-    ----------
-    file1 : str
-        Path to the first time series file. The file must contain at least
-        two columns: time and observed value.
+def jdr_parallel(file1, file2, alpha=0.5, delta_f=0.001, n_jobs=3, *, config=None):
+    cfg = config if config is not None else JDRConfig(alpha=alpha, f_min=delta_f)
+    return float(build_distance_matrix([file1, file2], cfg, n_jobs=n_jobs)[0, 1])
 
-    file2 : str
-        Path to the second time series file. Same format as `file1`.
 
-    alpha : float, optional (default=0.5)
-        Weighting parameter controlling the contribution of each signal.
-        The scaling factor is defined as:
-            beta = alpha * (1 - alpha)
-        Typical values are in the range (0, 1).
+def save_distance_matrix(path, D, files, config, extra=None):
+    from src.validation import validate_distance_matrix
 
-    delta_f : float, optional (default=0.001)
-        Lower bound of the frequency integration range. This avoids
-        numerical instability near zero frequency.
+    D = validate_distance_matrix(D)
+    files = [Path(f) for f in files]
+    if len(files) != len(D) or len({f.stem for f in files}) != len(files):
+        raise ValueError("Matrix rows require unique, matching object IDs.")
+    manifest = {
+        "version": 2,
+        "distance": "squared_jdr",
+        "config": asdict(config),
+        "files": [str(f.resolve()) for f in files],
+        "object_ids": [f.stem for f in files],
+        "sha256": [hashlib.sha256(f.read_bytes()).hexdigest() for f in files],
+        "extra": extra or {},
+    }
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("wb") as stream:
+        np.savez_compressed(stream, D=D, manifest=json.dumps(manifest))
 
-    Returns
-    -------
-    J : float
-        J-distance ratio between the two time series. Lower values indicate
-        higher similarity in their spectral structure, while larger values
-        indicate greater dissimilarity.
 
-    Notes
-    -----
-    The method computes:
+def load_distance_matrix(path, files, config, expected_extra=None):
+    from src.validation import validate_distance_matrix
 
-        Ix  = ∫ S_xx(f) df   (auto-spectrum of x)
-        Iy  = ∫ S_yy(f) df   (auto-spectrum of y)
-        Ixy = ∫ S_xy(f) df   (cross-spectrum)
-
-    over the frequency band [f_min, f_max], where:
-
-        f_min = delta_f
-        f_max = 1 / (2 * Δt)
-
-    and Δt is the average sampling interval.
-
-    The final metric is:
-
-        J = β * (Ix + Iy - 2 * Ixy) / (2π)
-
-    where β = α(1 - α).
-
-    This formulation is analogous to a spectral distance measure and is
-    closely related to energy differences in the frequency domain.
-
-    Assumptions
-    -----------
-    - Time series may be irregularly sampled.
-    - Signals are internally demeaned and normalized during spectral estimation.
-    - Integration is performed using numerical quadrature (SciPy backend).
-
-    Side Effects
-    ------------
-    Prints intermediate results (Ix, Iy, Ixy, J) to stdout.
-
-    Example
-    -------
-    >>> J = jdr("series1.dat", "series2.dat", alpha=0.5)
-    >>> print(J)
-
-    References
-    ----------
-    - xxxx
-    """
-    Irrlyr1 = read_ogle_dat(file1)
-    Irrlyr2 = read_ogle_dat(file2)
-    
-    t1 = Irrlyr1.iloc[:, 0].to_numpy()
-    x = Irrlyr1.iloc[:, 1].to_numpy()
-
-    t2 = Irrlyr2.iloc[:, 0].to_numpy()
-    y = Irrlyr2.iloc[:, 1].to_numpy()
-    
-    
-    beta = alpha * (1 - alpha)
-    st = t1
-
-    delta_t = (np.max(st) - np.min(st)) / len(st)
-
-    f_min = delta_f
-
-    f_max = 1.0 / (2.0 * delta_t)
-
-    Ix = integrate_cross_spectrum_real(f_min, f_max, t1, x, t1, x,  jacobian="df")
-    Iy = integrate_cross_spectrum_real(f_min, f_max, t2, y, t2, y,  jacobian="df")
-
-    f_max_xy = min(f_max, f_max)  # kept for structural similarity to your R
-    Ixy = integrate_cross_spectrum_real(f_min, f_max_xy, t1, x, t2, y,  jacobian="df")
-
-    J = beta * (Ix + Iy - 2.0 * Ixy) / (2.0 * np.pi)
-
-    print("\nResults:")
-    print(file1, file2)
-    print(f"Ix  = {Ix}")
-    print(f"Iy  = {Iy}")
-    print(f"Ixy = {Ixy}")
-    print(f"J   = {J}")
-
-    return J
+    with np.load(path, allow_pickle=False) as archive:
+        D = validate_distance_matrix(archive["D"])
+        m = json.loads(str(archive["manifest"]))
+    files = [Path(f) for f in files]
+    if (
+        m.get("version") != 2
+        or m["config"] != asdict(config)
+        or m.get("extra", {}) != (expected_extra or {})
+        or m["object_ids"] != [f.stem for f in files]
+        or len(D) != len(files)
+        or m["sha256"] != [hashlib.sha256(f.read_bytes()).hexdigest() for f in files]
+    ):
+        raise ValueError(
+            "Cached distance provenance does not match inputs/configuration."
+        )
+    return D, m

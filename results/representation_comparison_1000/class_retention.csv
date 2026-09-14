@@ -1,0 +1,46 @@
+representation,model,catalog_type,n,retention
+JDR,K-medoids,RRab,778,1.0
+JDR,K-medoids,RRc,214,1.0
+JDR,K-medoids,RRd,8,1.0
+JDR,K-means,RRab,778,1.0
+JDR,K-means,RRc,214,1.0
+JDR,K-means,RRd,8,1.0
+JDR,Average linkage,RRab,778,1.0
+JDR,Average linkage,RRc,214,1.0
+JDR,Average linkage,RRd,8,1.0
+JDR,DBSCAN,RRab,778,0.8766066838046273
+JDR,DBSCAN,RRc,214,0.6121495327102804
+JDR,DBSCAN,RRd,8,0.875
+JDR,HDBSCAN,RRab,778,0.6889460154241646
+JDR,HDBSCAN,RRc,214,0.4485981308411215
+JDR,HDBSCAN,RRd,8,0.625
+Classical shape,K-medoids,RRab,778,1.0
+Classical shape,K-medoids,RRc,214,1.0
+Classical shape,K-medoids,RRd,8,1.0
+Classical shape,K-means,RRab,778,1.0
+Classical shape,K-means,RRc,214,1.0
+Classical shape,K-means,RRd,8,1.0
+Classical shape,Average linkage,RRab,778,1.0
+Classical shape,Average linkage,RRc,214,1.0
+Classical shape,Average linkage,RRd,8,1.0
+Classical shape,DBSCAN,RRab,778,0.8033419023136247
+Classical shape,DBSCAN,RRc,214,0.6915887850467289
+Classical shape,DBSCAN,RRd,8,0.125
+Classical shape,HDBSCAN,RRab,778,0.5488431876606684
+Classical shape,HDBSCAN,RRc,214,0.2757009345794392
+Classical shape,HDBSCAN,RRd,8,0.0
+Classical full,K-medoids,RRab,778,1.0
+Classical full,K-medoids,RRc,214,1.0
+Classical full,K-medoids,RRd,8,1.0
+Classical full,K-means,RRab,778,1.0
+Classical full,K-means,RRc,214,1.0
+Classical full,K-means,RRd,8,1.0
+Classical full,Average linkage,RRab,778,1.0
+Classical full,Average linkage,RRc,214,1.0
+Classical full,Average linkage,RRd,8,1.0
+Classical full,DBSCAN,RRab,778,0.8174807197943444
+Classical full,DBSCAN,RRc,214,0.7242990654205608
+Classical full,DBSCAN,RRd,8,0.0
+Classical full,HDBSCAN,RRab,778,0.6298200514138818
+Classical full,HDBSCAN,RRc,214,0.3878504672897196
+Classical full,HDBSCAN,RRd,8,0.0

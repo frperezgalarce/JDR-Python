@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "standalone_folder_execution": true,
+  "project_module_imports": false,
+  "executed_cells": 14,
+  "repository_tests_passed": 45,
+  "notebook_self_checks": 8,
+  "full_recomputations": 2,
+  "all_ids_hashes_counts_checked": true,
+  "figure_checks": [
+    {
+      "figure": "figure_1_representation_comparison",
+      "png_pixels": [
+        4322,
+        2858
+      ],
+      "dpi": [
+        599.9988,
+        599.9988
+      ],
+      "embedded_pdf_fonts": true,
+      "editable_svg_text": true
+    },
+    {
+      "figure": "figure_2_representation_geometry",
+      "png_pixels": [
+        4322,
+        1582
+      ],
+      "dpi": [
+        599.9988,
+        599.9988
+      ],
+      "embedded_pdf_fonts": true,
+      "editable_svg_text": true
+    },
+    {
+      "figure": "figure_3_cluster_composition_retention",
+      "png_pixels": [
+        4322,
+        2976
+      ],
+      "dpi": [
+        599.9988,
+        599.9988
+      ],
+      "embedded_pdf_fonts": true,
+      "editable_svg_text": true
+    },
+    {
+      "figure": "figure_4_feature_and_protocol_diagnostics",
+      "png_pixels": [
+        4322,
+        2811
+      ],
+      "dpi": [
+        599.9988,
+        599.9988
+      ],
+      "embedded_pdf_fonts": true,
+      "editable_svg_text": true
+    }
+  ],
+  "visual_review": "All four PDFs rendered and inspected for labels, legends, source counts, axes and readability."
+}

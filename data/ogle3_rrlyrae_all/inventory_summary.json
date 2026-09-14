@@ -1,0 +1,38 @@
+{
+  "survey": "Original OGLE-III OIII-CVS catalogs; I-band archive photometry",
+  "n_catalog_objects": 44217,
+  "n_eligible": 43057,
+  "n_excluded": 1160,
+  "n_unmatched_archive_members": 0,
+  "catalog_region_counts": {
+    "LMC": 24906,
+    "BLG": 16836,
+    "SMC": 2475
+  },
+  "catalog_type_counts": {
+    "RRab": 31382,
+    "RRc": 10122,
+    "RRe": 1378,
+    "RRd": 1335
+  },
+  "eligible_region_counts": {
+    "LMC": 24141,
+    "BLG": 16591,
+    "SMC": 2325
+  },
+  "eligible_type_counts": {
+    "RRab": 30683,
+    "RRc": 9790,
+    "RRe": 1302,
+    "RRd": 1282
+  },
+  "n_measurements": 26514552,
+  "criteria": [
+    "All catalog IDs across BLG/LMC/SMC, including historical RRe",
+    "Original I-band data with at least 30 observations",
+    "Finite observations, positive errors, distinct times and folded phases, nonconstant magnitude",
+    "Catalog period and epoch present; RRd first-overtone mode",
+    "No byte-identical duplicate light curves; no individual-point clipping or repair"
+  ],
+  "interpretation": "Inventory covers all catalog IDs; analysis cohort excludes only explicitly logged unusable inputs. No random downsampling for the full experiment."
+}

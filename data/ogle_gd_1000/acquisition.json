@@ -1,0 +1,61 @@
+{
+  "source": "https://www.astrouw.edu.pl/ogle/ogle4/OCVS/gd/rrlyr/",
+  "citation": "Soszynski et al. (2019), Acta Astronomica 69, 321; arXiv:2001.00025",
+  "seed": 20260912,
+  "selection": "Same seeded permutation as the 500-object sample; first 1000 eligible objects, sorted by ID. Catalog epochs additionally parsed for phase folding.",
+  "criteria": [
+    "Subtype RRab, RRc or RRd (aRRd excluded).",
+    "I-band photometry with >=30 observations.",
+    "Finite values, positive errors, distinct times, nonconstant signal.",
+    "Catalog period available; no duplicate IDs/content."
+  ],
+  "eligible_archive_candidates": 11636,
+  "candidates_examined": 1011,
+  "class_counts": {
+    "RRab": 778,
+    "RRc": 214,
+    "RRd": 8
+  },
+  "source_files": [
+    {
+      "file": "data/ogle_gd_1000/source/README",
+      "url": "https://www.astrouw.edu.pl/ogle/ogle4/OCVS/gd/rrlyr/README",
+      "bytes": 5319,
+      "sha256": "a30c4490e47dac995997b3e74d971e80582c2155dd44d7c62fb9454a387082c4"
+    },
+    {
+      "file": "data/ogle_gd_1000/source/ident.dat",
+      "url": "https://www.astrouw.edu.pl/ogle/ogle4/OCVS/gd/rrlyr/ident.dat",
+      "bytes": 1190907,
+      "sha256": "0a694ce5b2c5eccb0387b174e69b7718749102c7bacb0dcd9e178ae595ccc226"
+    },
+    {
+      "file": "data/ogle_gd_1000/source/RRab.dat",
+      "url": "https://www.astrouw.edu.pl/ogle/ogle4/OCVS/gd/rrlyr/RRab.dat",
+      "bytes": 914640,
+      "sha256": "8d78b65b2f32f3faed618e3490c1b5b8bff18e749ca024ffd92282cbae366189"
+    },
+    {
+      "file": "data/ogle_gd_1000/source/RRc.dat",
+      "url": "https://www.astrouw.edu.pl/ogle/ogle4/OCVS/gd/rrlyr/RRc.dat",
+      "bytes": 270375,
+      "sha256": "d199cb53a2bce2dd13bdb2bb81b460edefb11f2b12db45150b56f2e9e625f246"
+    },
+    {
+      "file": "data/ogle_gd_1000/source/RRd.dat",
+      "url": "https://www.astrouw.edu.pl/ogle/ogle4/OCVS/gd/rrlyr/RRd.dat",
+      "bytes": 23427,
+      "sha256": "fdbe91dd4b1d6b151219ec7a5a590a4c5b88c3f7b142883fc847d1363fc8130b"
+    },
+    {
+      "file": "data/ogle_gd_1000/source/phot.tar.gz",
+      "url": "https://www.astrouw.edu.pl/ogle/ogle4/OCVS/gd/rrlyr/phot.tar.gz",
+      "bytes": 13090558,
+      "sha256": "ba2cc5783e6209593610d5365a9f364dd0057c53e408e679ae317a1ca78bfb67"
+    }
+  ],
+  "excluded_before_1000": 11,
+  "n_objects": 1000,
+  "contains_previous_500": true,
+  "period_policy": "Use catalog period and epoch directly; RRd uses the catalog first-overtone mode. No period search or catalog-label optimization."
+}

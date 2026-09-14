@@ -1,0 +1,16 @@
+{
+  "self_tests_passed": [
+    "Fourier ratios and phases",
+    "magnitude/phase invariances of shape features",
+    "independent Astropy power",
+    "scalar cross-spectrum and zero-frequency limit",
+    "median imputation and IQR scaling",
+    "subset scaling isolation",
+    "enumerated K-medoids optimum",
+    "independent three-integral identity"
+  ],
+  "all_primary_results": 15,
+  "stability_rows": 450,
+  "all_cluster_totals": 1000,
+  "completed": true
+}

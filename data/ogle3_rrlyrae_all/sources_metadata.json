@@ -1,0 +1,125 @@
+{
+  "survey": "OGLE-III original OIII-CVS, not OGLE-IV OCVS",
+  "retrieved_utc": "2026-09-14T02:02:14.701279+00:00",
+  "files": [
+    {
+      "region": "blg",
+      "file": "source/blg/README",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/blg/rrlyr/README",
+      "bytes": 5089,
+      "sha256": "3fc5af0f45290e3a441c69aa031a2df592bf8b1ab4b99fe2f53d67e00a2890ae"
+    },
+    {
+      "region": "blg",
+      "file": "source/blg/ident.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/blg/rrlyr/ident.dat",
+      "bytes": 1902471,
+      "sha256": "20600a5d9a0fa050ce581b98ef8b329b1b472b11d436da6dabd66ca3945e5924"
+    },
+    {
+      "region": "blg",
+      "file": "source/blg/RRab.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/blg/rrlyr/RRab.dat",
+      "bytes": 1222624,
+      "sha256": "1ed95b995c1383ff1d0a4a021122d83471ef7135460e6ed794b6e95ecfd087fa"
+    },
+    {
+      "region": "blg",
+      "file": "source/blg/RRc.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/blg/rrlyr/RRc.dat",
+      "bytes": 518856,
+      "sha256": "86162947d8a15f61bfc0f827c9c5ad431b95e163a917336eff4e4a6229d0d974"
+    },
+    {
+      "region": "blg",
+      "file": "source/blg/RRd.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/blg/rrlyr/RRd.dat",
+      "bytes": 15652,
+      "sha256": "011541ec65b43aeffda89a5fbea98a784ef8f5be0dc037ea724fc9e67e615903"
+    },
+    {
+      "region": "lmc",
+      "file": "source/lmc/README",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/lmc/rrlyr/README",
+      "bytes": 5105,
+      "sha256": "1a917992c3691ea31385fdaa739b5a0af53dea02644b3b10f336183c0a5f3d88"
+    },
+    {
+      "region": "lmc",
+      "file": "source/lmc/ident.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/lmc/rrlyr/ident.dat",
+      "bytes": 2615511,
+      "sha256": "16adf6de656db093252c9c1fe253d367148e5a5ed7326e6ff5e927e1b833d043"
+    },
+    {
+      "region": "lmc",
+      "file": "source/lmc/RRab.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/lmc/rrlyr/RRab.dat",
+      "bytes": 1786995,
+      "sha256": "836dcfbe84d55e85e7d90e28e928931654542841c4d6fd42ea4b1a914ae3dddc"
+    },
+    {
+      "region": "lmc",
+      "file": "source/lmc/RRc.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/lmc/rrlyr/RRc.dat",
+      "bytes": 500758,
+      "sha256": "e30a658e24e262a7dfbc73c6b86db87995a50a77e0eb0ec12f6c629f65f10141"
+    },
+    {
+      "region": "lmc",
+      "file": "source/lmc/RRd.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/lmc/rrlyr/RRd.dat",
+      "bytes": 164662,
+      "sha256": "f9b218dadf8a453cc914c8c7d2e058673f3d037fe36f54470e1325e5e60de1c3"
+    },
+    {
+      "region": "lmc",
+      "file": "source/lmc/RRe.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/lmc/rrlyr/RRe.dat",
+      "bytes": 128169,
+      "sha256": "3d054680fd3c79e762833d18ce3e88012915528c5049008a619f90c97e9a0679"
+    },
+    {
+      "region": "smc",
+      "file": "source/smc/README",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/smc/rrlyr/README",
+      "bytes": 5084,
+      "sha256": "5b3cb2ab029b1265b98229abe313b5fd9cc8f85ee46109ed6db1b9fb79961d3e"
+    },
+    {
+      "region": "smc",
+      "file": "source/smc/ident.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/smc/rrlyr/ident.dat",
+      "bytes": 222806,
+      "sha256": "3721a5424bb7810fe42c99218c34d00303958e135f8c606a7a0de373879643d6"
+    },
+    {
+      "region": "smc",
+      "file": "source/smc/RRab.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/smc/rrlyr/RRab.dat",
+      "bytes": 195233,
+      "sha256": "d1c27a377df975640e5a7aa22173424c2720432a97d906632e0d82a331d8ea31"
+    },
+    {
+      "region": "smc",
+      "file": "source/smc/RRc.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/smc/rrlyr/RRc.dat",
+      "bytes": 17675,
+      "sha256": "86ca61b08a8edf2d09d6f38b2e2704c9bef20a03077ed973af0ef4f289a2ccb2"
+    },
+    {
+      "region": "smc",
+      "file": "source/smc/RRd.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/smc/rrlyr/RRd.dat",
+      "bytes": 43092,
+      "sha256": "a0292188b56d539031ea70ae668ebc44e50e930c3565f35f5ff6147d249f2d7b"
+    },
+    {
+      "region": "smc",
+      "file": "source/smc/RRe.dat",
+      "url": "https://ftp.astrouw.edu.pl/ogle/ogle3/OIII-CVS/smc/rrlyr/RRe.dat",
+      "bytes": 11009,
+      "sha256": "524cdc3f74f4cf7893b570f4651dcd97894bfe47d5f4ad69cb9ef37d2a54dc0a"
+    }
+  ]
+}

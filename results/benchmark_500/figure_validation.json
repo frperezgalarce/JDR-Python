@@ -1,0 +1,65 @@
+{
+  "exports": [
+    {
+      "figure": "figure_1_cohort_geometry",
+      "png_size": [
+        4322,
+        3023
+      ],
+      "png_dpi": [
+        599.9988,
+        599.9988
+      ],
+      "pdf_embedded_truetype": true,
+      "svg_editable_text": true,
+      "pdf_bytes": 401955,
+      "svg_bytes": 1006843
+    },
+    {
+      "figure": "figure_2_model_comparison",
+      "png_size": [
+        4322,
+        2811
+      ],
+      "png_dpi": [
+        599.9988,
+        599.9988
+      ],
+      "pdf_embedded_truetype": true,
+      "svg_editable_text": true,
+      "pdf_bytes": 48221,
+      "svg_bytes": 68546
+    },
+    {
+      "figure": "figure_3_cluster_composition",
+      "png_size": [
+        4322,
+        1606
+      ],
+      "png_dpi": [
+        599.9988,
+        599.9988
+      ],
+      "pdf_embedded_truetype": true,
+      "svg_editable_text": true,
+      "pdf_bytes": 35650,
+      "svg_bytes": 53864
+    },
+    {
+      "figure": "figure_4_numerical_sensitivity",
+      "png_size": [
+        4322,
+        1535
+      ],
+      "png_dpi": [
+        599.9988,
+        599.9988
+      ],
+      "pdf_embedded_truetype": true,
+      "svg_editable_text": true,
+      "pdf_bytes": 41514,
+      "svg_bytes": 33577
+    }
+  ],
+  "visual_review": "Four preview figures inspected; axes, labels, legends and 500-object counts checked."
+}

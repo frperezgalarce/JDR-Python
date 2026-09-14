@@ -1,0 +1,207 @@
+{
+  "scope": "1000-object nested OGLE Galactic Disk sample; paper Eq. (1)/(7) with approved Eq. (6) clarification; catalog periods. Exploratory in-sample comparison.",
+  "protocol": {
+    "version": 3,
+    "n_objects": 1000,
+    "seed": 20260912,
+    "n_clusters": 3,
+    "n_init": 20,
+    "dbscan_min_samples": 5,
+    "dbscan_eps_quantile": 0.7,
+    "hdbscan_min_cluster_size": 5,
+    "hdbscan_min_samples": 5,
+    "subsamples": 30,
+    "subsample_fraction": 0.8,
+    "grid_sizes": [
+      1025,
+      2049,
+      4097
+    ],
+    "grid_rtol": 0.001,
+    "grid_atol": 1e-08,
+    "distance": "J from paper Eq. (7), clarified amplitude cross-spectrum; matrix methods use J, K-means full embedding with squared objective",
+    "period_policy": "Catalog period and epoch, primary mode (first overtone for RRd); no period search",
+    "input": "Original irregular phase-folded measurements, centered and population-SD standardized; no smoothing or interpolation in JDR",
+    "spectral_convention": "Paper Eq. (1) normalized projections, shared-basis complex amplitudes; Re cross-spectrum",
+    "omega_band": [
+      0.0,
+      6.283185307179586
+    ],
+    "frequency_measure": "domega",
+    "alpha": 0.5
+  },
+  "jdr_config": {
+    "n_frequencies": 4097,
+    "alpha": 0.5,
+    "normalize": true
+  },
+  "n_objects": 1000,
+  "class_counts": {
+    "RRab": 778,
+    "RRc": 214,
+    "RRd": 8
+  },
+  "region_counts": {
+    "GD": 1000
+  },
+  "majority_class_fraction": 0.778,
+  "grid_convergence": [
+    {
+      "coarse_grid": 1025,
+      "fine_grid": 2049,
+      "relative_max_error": 6.778418134980502e-08,
+      "all_pairs_close": true,
+      "neighbor_agreement": 1.0
+    },
+    {
+      "coarse_grid": 2049,
+      "fine_grid": 4097,
+      "relative_max_error": 1.6946045346055624e-08,
+      "all_pairs_close": true,
+      "neighbor_agreement": 1.0
+    }
+  ],
+  "permutation_invariance": true,
+  "fit_info": {
+    "dbscan_eps": 0.024627733492340226,
+    "medoid_indices": [
+      657,
+      279,
+      569
+    ],
+    "medoid_objective": 264.79420233678377,
+    "dbscan_reference_agreement": true
+  },
+  "models": {
+    "K-medoids": {
+      "coverage": 1.0,
+      "n_noise": 0,
+      "n_clusters": 3,
+      "cluster_sizes": {
+        "0": 361,
+        "1": 401,
+        "2": 238
+      },
+      "purity_assigned": 0.915,
+      "ari_all": 0.2919057724534147,
+      "ami_all": 0.3654160103724583,
+      "ari_assigned": 0.2919057724534147,
+      "class_retention": {
+        "RRab": 1.0,
+        "RRc": 1.0,
+        "RRd": 1.0
+      },
+      "silhouette_assigned": 0.5888521770131174,
+      "ari_region_all": null
+    },
+    "K-means": {
+      "coverage": 1.0,
+      "n_noise": 0,
+      "n_clusters": 3,
+      "cluster_sizes": {
+        "0": 428,
+        "1": 229,
+        "2": 343
+      },
+      "purity_assigned": 0.918,
+      "ari_all": 0.3070183258060435,
+      "ami_all": 0.37367142122184704,
+      "ari_assigned": 0.3070183258060435,
+      "class_retention": {
+        "RRab": 1.0,
+        "RRc": 1.0,
+        "RRd": 1.0
+      },
+      "silhouette_assigned": 0.5928867386219715,
+      "ari_region_all": null
+    },
+    "Average linkage": {
+      "coverage": 1.0,
+      "n_noise": 0,
+      "n_clusters": 3,
+      "cluster_sizes": {
+        "0": 744,
+        "1": 2,
+        "2": 254
+      },
+      "purity_assigned": 0.913,
+      "ari_all": 0.6729809313986163,
+      "ami_all": 0.5036743972855989,
+      "ari_assigned": 0.6729809313986163,
+      "class_retention": {
+        "RRab": 1.0,
+        "RRc": 1.0,
+        "RRd": 1.0
+      },
+      "silhouette_assigned": 0.7049471999250632,
+      "ari_region_all": null
+    },
+    "DBSCAN": {
+      "coverage": 0.82,
+      "n_noise": 180,
+      "n_clusters": 8,
+      "cluster_sizes": {
+        "0": 665,
+        "1": 5,
+        "2": 124,
+        "3": 6,
+        "4": 4,
+        "5": 4,
+        "6": 5,
+        "7": 7
+      },
+      "purity_assigned": 0.9548780487804878,
+      "ari_all": 0.5351998563271123,
+      "ami_all": 0.3709642622297663,
+      "ari_assigned": 0.7718376560156301,
+      "class_retention": {
+        "RRab": 0.8766066838046273,
+        "RRc": 0.6121495327102804,
+        "RRd": 0.875
+      },
+      "silhouette_assigned": 0.3187572869436591,
+      "ari_region_all": null
+    },
+    "HDBSCAN": {
+      "coverage": 0.637,
+      "n_noise": 363,
+      "n_clusters": 7,
+      "cluster_sizes": {
+        "0": 116,
+        "1": 5,
+        "2": 7,
+        "3": 14,
+        "4": 5,
+        "5": 485,
+        "6": 5
+      },
+      "purity_assigned": 0.9544740973312402,
+      "ari_all": 0.24236942177011928,
+      "ami_all": 0.25367650613312526,
+      "ari_assigned": 0.6450429020945633,
+      "class_retention": {
+        "RRab": 0.6889460154241646,
+        "RRc": 0.4485981308411215,
+        "RRd": 0.625
+      },
+      "silhouette_assigned": -0.08724239257521613,
+      "ari_region_all": null
+    }
+  },
+  "pca_explained_variance_ratio": [
+    0.8746030987075338,
+    0.1106576229056565
+  ],
+  "limitations": [
+    "Eq. (6) requires the documented, user-approved amplitude interpretation; this is not a literal reproduction of the inconsistent power-product formula.",
+    "The printed triangle-inequality claim does not hold for J in general; sqrt(J) is the Euclidean metric.",
+    "Catalog phase folding, standardization and choice of first-overtone mode for RRd are explicit application choices, not prescribed by the paper.",
+    "Original irregular observations feed Eq. (1); its projection power depends on observation count and sampling, which are not normalized away.",
+    "Single-mode folding is incomplete for RRd and modulated stars; periods and epochs have uncertainty.",
+    "Only a small RRd subgroup; no reliable rare-class generalization.",
+    "One I band and the LSP estimator of Eq. (7); multitaper Eq. (8)/(9) and multiband combination are not implemented in this experiment.",
+    "K=3 is a declared subtype-informed assumption; catalog labels are not used to optimize model settings.",
+    "Subsampling holds folded observations fixed; no photometric or period uncertainty propagation or model-superiority significance claim.",
+    "No direct score comparison with the old 500-study: preprocessing, spectral convention, integration band and matrix dissimilarity have changed."
+  ]
+}

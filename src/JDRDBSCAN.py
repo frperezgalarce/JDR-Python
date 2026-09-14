@@ -1,3 +1,4 @@
+from src.validation import validate_distance_matrix, positive_integer
 import numpy as np
 from typing import List, Optional, Sequence, Union
 
@@ -17,38 +18,21 @@ class JDRDBSCAN:
         Whether to print progress.
     """
 
-    def __init__(
-        self,
-        eps: float,
-        min_samples: int = 5,
-        verbose: bool = False
-    ):
+    def __init__(self, eps: float, min_samples: int = 5, verbose: bool = False):
         self.eps = eps
         self.min_samples = min_samples
         self.verbose = verbose
 
         # learned attributes
-        self.labels_ = None          # cluster labels, -1 means noise
-        self.clusters_ = None        # list of lists of observation indices
-        self.core_samples_ = None    # indices of core points
+        self.labels_ = None  # cluster labels, -1 means noise
+        self.clusters_ = None  # list of lists of observation indices
+        self.core_samples_ = None  # indices of core points
         self.distance_matrix_ = None
         self.n_clusters_ = 0
         self.n_noise_ = 0
 
     def _validate_distance_matrix(self, D: np.ndarray) -> np.ndarray:
-        if not isinstance(D, np.ndarray):
-            D = np.asarray(D)
-
-        if D.ndim != 2 or D.shape[0] != D.shape[1]:
-            raise ValueError("Distance matrix D must be square.")
-
-        if np.any(np.isnan(D)):
-            raise ValueError("Distance matrix D contains NaN values.")
-
-        if np.any(D < 0):
-            raise ValueError("Distance matrix D contains negative values.")
-
-        return D
+        return validate_distance_matrix(D)
 
     def _region_query(self, D: np.ndarray, point_idx: int) -> np.ndarray:
         """
@@ -65,7 +49,7 @@ class JDRDBSCAN:
         point_idx: int,
         neighbors: np.ndarray,
         cluster_id: int,
-        core_mask: np.ndarray
+        core_mask: np.ndarray,
     ) -> None:
         """
         Expand a cluster starting from a core point.
@@ -74,6 +58,7 @@ class JDRDBSCAN:
         i = 0
 
         neighbors = list(neighbors)
+        queued = set(neighbors)
 
         while i < len(neighbors):
             neighbor_idx = neighbors[i]
@@ -87,7 +72,8 @@ class JDRDBSCAN:
 
                     # Add new reachable points
                     for nn in neighbor_neighbors:
-                        if nn not in neighbors:
+                        if nn not in queued:
+                            queued.add(nn)
                             neighbors.append(nn)
 
             # Assign to cluster if not yet assigned or previously marked as noise
@@ -116,13 +102,12 @@ class JDRDBSCAN:
         D = self._validate_distance_matrix(D)
         n = D.shape[0]
 
-        if self.eps <= 0:
+        if not np.isfinite(self.eps) or self.eps <= 0:
             raise ValueError("eps must be positive.")
-        if self.min_samples <= 0:
-            raise ValueError("min_samples must be positive.")
+        positive_integer(self.min_samples, "min_samples")
 
         visited = np.zeros(n, dtype=bool)
-        labels = -1 * np.ones(n, dtype=int)   # -1 means noise/unassigned
+        labels = -1 * np.ones(n, dtype=int)  # -1 means noise/unassigned
         core_mask = np.zeros(n, dtype=bool)
 
         cluster_id = 0
@@ -149,7 +134,7 @@ class JDRDBSCAN:
                     point_idx=point_idx,
                     neighbors=neighbors,
                     cluster_id=cluster_id,
-                    core_mask=core_mask
+                    core_mask=core_mask,
                 )
                 cluster_id += 1
 

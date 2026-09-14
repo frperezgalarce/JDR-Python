@@ -1,0 +1,7 @@
+representation,quantity,pc1_spearman,interpretation
+JDR,n_observations,-0.5475492027885347,"Descriptive association, not causal evidence; PCA sign is arbitrary."
+JDR,baseline_days,-0.4611696095255981,"Descriptive association, not causal evidence; PCA sign is arbitrary."
+Classical shape,n_observations,0.022422065141094343,"Descriptive association, not causal evidence; PCA sign is arbitrary."
+Classical shape,baseline_days,0.07234355750742741,"Descriptive association, not causal evidence; PCA sign is arbitrary."
+Classical full,n_observations,0.036853081276720205,"Descriptive association, not causal evidence; PCA sign is arbitrary."
+Classical full,baseline_days,0.08740847290422409,"Descriptive association, not causal evidence; PCA sign is arbitrary."

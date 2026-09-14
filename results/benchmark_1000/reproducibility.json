@@ -1,0 +1,8 @@
+{
+  "independent_full_recomputations": 2,
+  "arrays_identical": true,
+  "tables_identical": true,
+  "provenance_identical": true,
+  "additional_checks_identical": true,
+  "comparison": "Exact within the recorded environment; not promised across numerical library or platform versions."
+}

@@ -1,0 +1,5 @@
+{
+  "elapsed_seconds": 48.25993187498534,
+  "scope": "Full local 1000-curve analysis, all grids, primary models, 30 stability refits, sensitivity and scalar-reference integrals; excludes rendering. No period search.",
+  "execution": "Local Python, one numerical thread."
+}

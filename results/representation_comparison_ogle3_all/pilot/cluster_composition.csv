@@ -1,0 +1,329 @@
+representation,model,cluster,catalog_type,count
+JDR,K-medoids,0,RRab,88
+JDR,K-medoids,1,RRab,244
+JDR,K-medoids,2,RRab,44
+JDR,K-medoids,3,RRab,4
+JDR,K-medoids,0,RRc,59
+JDR,K-medoids,1,RRc,7
+JDR,K-medoids,2,RRc,0
+JDR,K-medoids,3,RRc,35
+JDR,K-medoids,0,RRd,16
+JDR,K-medoids,1,RRd,2
+JDR,K-medoids,2,RRd,0
+JDR,K-medoids,3,RRd,0
+JDR,K-medoids,0,RRe,11
+JDR,K-medoids,1,RRe,0
+JDR,K-medoids,2,RRe,0
+JDR,K-medoids,3,RRe,2
+JDR,K-means,0,RRab,4
+JDR,K-means,1,RRab,232
+JDR,K-means,2,RRab,58
+JDR,K-means,3,RRab,86
+JDR,K-means,0,RRc,33
+JDR,K-means,1,RRc,12
+JDR,K-means,2,RRc,56
+JDR,K-means,3,RRc,0
+JDR,K-means,0,RRd,0
+JDR,K-means,1,RRd,2
+JDR,K-means,2,RRd,16
+JDR,K-means,3,RRd,0
+JDR,K-means,0,RRe,2
+JDR,K-means,1,RRe,0
+JDR,K-means,2,RRe,11
+JDR,K-means,3,RRe,0
+JDR,Average linkage,0,RRab,46
+JDR,Average linkage,1,RRab,1
+JDR,Average linkage,2,RRab,332
+JDR,Average linkage,3,RRab,1
+JDR,Average linkage,0,RRc,1
+JDR,Average linkage,1,RRc,1
+JDR,Average linkage,2,RRc,75
+JDR,Average linkage,3,RRc,24
+JDR,Average linkage,0,RRd,0
+JDR,Average linkage,1,RRd,0
+JDR,Average linkage,2,RRd,18
+JDR,Average linkage,3,RRd,0
+JDR,Average linkage,0,RRe,0
+JDR,Average linkage,1,RRe,0
+JDR,Average linkage,2,RRe,13
+JDR,Average linkage,3,RRe,0
+JDR,DBSCAN,-1,RRab,56
+JDR,DBSCAN,0,RRab,292
+JDR,DBSCAN,1,RRab,6
+JDR,DBSCAN,2,RRab,15
+JDR,DBSCAN,3,RRab,3
+JDR,DBSCAN,4,RRab,8
+JDR,DBSCAN,-1,RRc,46
+JDR,DBSCAN,0,RRc,30
+JDR,DBSCAN,1,RRc,0
+JDR,DBSCAN,2,RRc,2
+JDR,DBSCAN,3,RRc,20
+JDR,DBSCAN,4,RRc,3
+JDR,DBSCAN,-1,RRd,2
+JDR,DBSCAN,0,RRd,15
+JDR,DBSCAN,1,RRd,0
+JDR,DBSCAN,2,RRd,0
+JDR,DBSCAN,3,RRd,1
+JDR,DBSCAN,4,RRd,0
+JDR,DBSCAN,-1,RRe,1
+JDR,DBSCAN,0,RRe,5
+JDR,DBSCAN,1,RRe,0
+JDR,DBSCAN,2,RRe,0
+JDR,DBSCAN,3,RRe,7
+JDR,DBSCAN,4,RRe,0
+JDR,HDBSCAN,-1,RRab,179
+JDR,HDBSCAN,0,RRab,9
+JDR,HDBSCAN,1,RRab,15
+JDR,HDBSCAN,2,RRab,0
+JDR,HDBSCAN,3,RRab,1
+JDR,HDBSCAN,4,RRab,2
+JDR,HDBSCAN,5,RRab,9
+JDR,HDBSCAN,6,RRab,11
+JDR,HDBSCAN,7,RRab,2
+JDR,HDBSCAN,8,RRab,11
+JDR,HDBSCAN,9,RRab,5
+JDR,HDBSCAN,10,RRab,14
+JDR,HDBSCAN,11,RRab,5
+JDR,HDBSCAN,12,RRab,2
+JDR,HDBSCAN,13,RRab,0
+JDR,HDBSCAN,14,RRab,30
+JDR,HDBSCAN,15,RRab,17
+JDR,HDBSCAN,16,RRab,24
+JDR,HDBSCAN,17,RRab,3
+JDR,HDBSCAN,18,RRab,35
+JDR,HDBSCAN,19,RRab,6
+JDR,HDBSCAN,-1,RRc,58
+JDR,HDBSCAN,0,RRc,0
+JDR,HDBSCAN,1,RRc,0
+JDR,HDBSCAN,2,RRc,6
+JDR,HDBSCAN,3,RRc,10
+JDR,HDBSCAN,4,RRc,4
+JDR,HDBSCAN,5,RRc,2
+JDR,HDBSCAN,6,RRc,1
+JDR,HDBSCAN,7,RRc,2
+JDR,HDBSCAN,8,RRc,8
+JDR,HDBSCAN,9,RRc,0
+JDR,HDBSCAN,10,RRc,0
+JDR,HDBSCAN,11,RRc,0
+JDR,HDBSCAN,12,RRc,3
+JDR,HDBSCAN,13,RRc,5
+JDR,HDBSCAN,14,RRc,0
+JDR,HDBSCAN,15,RRc,0
+JDR,HDBSCAN,16,RRc,0
+JDR,HDBSCAN,17,RRc,2
+JDR,HDBSCAN,18,RRc,0
+JDR,HDBSCAN,19,RRc,0
+JDR,HDBSCAN,-1,RRd,10
+JDR,HDBSCAN,0,RRd,0
+JDR,HDBSCAN,1,RRd,0
+JDR,HDBSCAN,2,RRd,0
+JDR,HDBSCAN,3,RRd,1
+JDR,HDBSCAN,4,RRd,0
+JDR,HDBSCAN,5,RRd,0
+JDR,HDBSCAN,6,RRd,0
+JDR,HDBSCAN,7,RRd,1
+JDR,HDBSCAN,8,RRd,2
+JDR,HDBSCAN,9,RRd,0
+JDR,HDBSCAN,10,RRd,0
+JDR,HDBSCAN,11,RRd,0
+JDR,HDBSCAN,12,RRd,1
+JDR,HDBSCAN,13,RRd,2
+JDR,HDBSCAN,14,RRd,0
+JDR,HDBSCAN,15,RRd,0
+JDR,HDBSCAN,16,RRd,0
+JDR,HDBSCAN,17,RRd,1
+JDR,HDBSCAN,18,RRd,0
+JDR,HDBSCAN,19,RRd,0
+JDR,HDBSCAN,-1,RRe,7
+JDR,HDBSCAN,0,RRe,0
+JDR,HDBSCAN,1,RRe,0
+JDR,HDBSCAN,2,RRe,0
+JDR,HDBSCAN,3,RRe,5
+JDR,HDBSCAN,4,RRe,1
+JDR,HDBSCAN,5,RRe,0
+JDR,HDBSCAN,6,RRe,0
+JDR,HDBSCAN,7,RRe,0
+JDR,HDBSCAN,8,RRe,0
+JDR,HDBSCAN,9,RRe,0
+JDR,HDBSCAN,10,RRe,0
+JDR,HDBSCAN,11,RRe,0
+JDR,HDBSCAN,12,RRe,0
+JDR,HDBSCAN,13,RRe,0
+JDR,HDBSCAN,14,RRe,0
+JDR,HDBSCAN,15,RRe,0
+JDR,HDBSCAN,16,RRe,0
+JDR,HDBSCAN,17,RRe,0
+JDR,HDBSCAN,18,RRe,0
+JDR,HDBSCAN,19,RRe,0
+Classical shape,K-medoids,0,RRab,0
+Classical shape,K-medoids,1,RRab,50
+Classical shape,K-medoids,2,RRab,250
+Classical shape,K-medoids,3,RRab,80
+Classical shape,K-medoids,0,RRc,9
+Classical shape,K-medoids,1,RRc,68
+Classical shape,K-medoids,2,RRc,0
+Classical shape,K-medoids,3,RRc,24
+Classical shape,K-medoids,0,RRd,0
+Classical shape,K-medoids,1,RRd,1
+Classical shape,K-medoids,2,RRd,0
+Classical shape,K-medoids,3,RRd,17
+Classical shape,K-medoids,0,RRe,3
+Classical shape,K-medoids,1,RRe,0
+Classical shape,K-medoids,2,RRe,0
+Classical shape,K-medoids,3,RRe,10
+Classical shape,K-means,0,RRab,0
+Classical shape,K-means,1,RRab,65
+Classical shape,K-means,2,RRab,260
+Classical shape,K-means,3,RRab,55
+Classical shape,K-means,0,RRc,8
+Classical shape,K-means,1,RRc,22
+Classical shape,K-means,2,RRc,0
+Classical shape,K-means,3,RRc,71
+Classical shape,K-means,0,RRd,0
+Classical shape,K-means,1,RRd,17
+Classical shape,K-means,2,RRd,0
+Classical shape,K-means,3,RRd,1
+Classical shape,K-means,0,RRe,2
+Classical shape,K-means,1,RRe,11
+Classical shape,K-means,2,RRe,0
+Classical shape,K-means,3,RRe,0
+Classical shape,Average linkage,0,RRab,380
+Classical shape,Average linkage,1,RRab,0
+Classical shape,Average linkage,2,RRab,0
+Classical shape,Average linkage,3,RRab,0
+Classical shape,Average linkage,0,RRc,91
+Classical shape,Average linkage,1,RRc,7
+Classical shape,Average linkage,2,RRc,3
+Classical shape,Average linkage,3,RRc,0
+Classical shape,Average linkage,0,RRd,18
+Classical shape,Average linkage,1,RRd,0
+Classical shape,Average linkage,2,RRd,0
+Classical shape,Average linkage,3,RRd,0
+Classical shape,Average linkage,0,RRe,10
+Classical shape,Average linkage,1,RRe,1
+Classical shape,Average linkage,2,RRe,0
+Classical shape,Average linkage,3,RRe,2
+Classical shape,DBSCAN,-1,RRab,51
+Classical shape,DBSCAN,0,RRab,329
+Classical shape,DBSCAN,-1,RRc,35
+Classical shape,DBSCAN,0,RRc,66
+Classical shape,DBSCAN,-1,RRd,18
+Classical shape,DBSCAN,0,RRd,0
+Classical shape,DBSCAN,-1,RRe,13
+Classical shape,DBSCAN,0,RRe,0
+Classical shape,HDBSCAN,-1,RRab,112
+Classical shape,HDBSCAN,0,RRab,0
+Classical shape,HDBSCAN,1,RRab,0
+Classical shape,HDBSCAN,2,RRab,268
+Classical shape,HDBSCAN,3,RRab,0
+Classical shape,HDBSCAN,-1,RRc,66
+Classical shape,HDBSCAN,0,RRc,11
+Classical shape,HDBSCAN,1,RRc,13
+Classical shape,HDBSCAN,2,RRc,6
+Classical shape,HDBSCAN,3,RRc,5
+Classical shape,HDBSCAN,-1,RRd,18
+Classical shape,HDBSCAN,0,RRd,0
+Classical shape,HDBSCAN,1,RRd,0
+Classical shape,HDBSCAN,2,RRd,0
+Classical shape,HDBSCAN,3,RRd,0
+Classical shape,HDBSCAN,-1,RRe,13
+Classical shape,HDBSCAN,0,RRe,0
+Classical shape,HDBSCAN,1,RRe,0
+Classical shape,HDBSCAN,2,RRe,0
+Classical shape,HDBSCAN,3,RRe,0
+Classical full,K-medoids,0,RRab,0
+Classical full,K-medoids,1,RRab,10
+Classical full,K-medoids,2,RRab,227
+Classical full,K-medoids,3,RRab,143
+Classical full,K-medoids,0,RRc,9
+Classical full,K-medoids,1,RRc,90
+Classical full,K-medoids,2,RRc,0
+Classical full,K-medoids,3,RRc,2
+Classical full,K-medoids,0,RRd,0
+Classical full,K-medoids,1,RRd,14
+Classical full,K-medoids,2,RRd,0
+Classical full,K-medoids,3,RRd,4
+Classical full,K-medoids,0,RRe,3
+Classical full,K-medoids,1,RRe,10
+Classical full,K-medoids,2,RRe,0
+Classical full,K-medoids,3,RRe,0
+Classical full,K-means,0,RRab,279
+Classical full,K-means,1,RRab,44
+Classical full,K-means,2,RRab,0
+Classical full,K-means,3,RRab,57
+Classical full,K-means,0,RRc,0
+Classical full,K-means,1,RRc,75
+Classical full,K-means,2,RRc,8
+Classical full,K-means,3,RRc,18
+Classical full,K-means,0,RRd,0
+Classical full,K-means,1,RRd,1
+Classical full,K-means,2,RRd,0
+Classical full,K-means,3,RRd,17
+Classical full,K-means,0,RRe,0
+Classical full,K-means,1,RRe,0
+Classical full,K-means,2,RRe,2
+Classical full,K-means,3,RRe,11
+Classical full,Average linkage,0,RRab,0
+Classical full,Average linkage,1,RRab,0
+Classical full,Average linkage,2,RRab,380
+Classical full,Average linkage,3,RRab,0
+Classical full,Average linkage,0,RRc,7
+Classical full,Average linkage,1,RRc,3
+Classical full,Average linkage,2,RRc,91
+Classical full,Average linkage,3,RRc,0
+Classical full,Average linkage,0,RRd,0
+Classical full,Average linkage,1,RRd,0
+Classical full,Average linkage,2,RRd,18
+Classical full,Average linkage,3,RRd,0
+Classical full,Average linkage,0,RRe,1
+Classical full,Average linkage,1,RRe,0
+Classical full,Average linkage,2,RRe,10
+Classical full,Average linkage,3,RRe,2
+Classical full,DBSCAN,-1,RRab,49
+Classical full,DBSCAN,0,RRab,331
+Classical full,DBSCAN,1,RRab,0
+Classical full,DBSCAN,2,RRab,0
+Classical full,DBSCAN,3,RRab,0
+Classical full,DBSCAN,-1,RRc,41
+Classical full,DBSCAN,0,RRc,0
+Classical full,DBSCAN,1,RRc,33
+Classical full,DBSCAN,2,RRc,27
+Classical full,DBSCAN,3,RRc,0
+Classical full,DBSCAN,-1,RRd,13
+Classical full,DBSCAN,0,RRd,0
+Classical full,DBSCAN,1,RRd,0
+Classical full,DBSCAN,2,RRd,0
+Classical full,DBSCAN,3,RRd,5
+Classical full,DBSCAN,-1,RRe,13
+Classical full,DBSCAN,0,RRe,0
+Classical full,DBSCAN,1,RRe,0
+Classical full,DBSCAN,2,RRe,0
+Classical full,DBSCAN,3,RRe,0
+Classical full,HDBSCAN,-1,RRab,29
+Classical full,HDBSCAN,0,RRab,0
+Classical full,HDBSCAN,1,RRab,351
+Classical full,HDBSCAN,2,RRab,0
+Classical full,HDBSCAN,3,RRab,0
+Classical full,HDBSCAN,4,RRab,0
+Classical full,HDBSCAN,5,RRab,0
+Classical full,HDBSCAN,-1,RRc,49
+Classical full,HDBSCAN,0,RRc,6
+Classical full,HDBSCAN,1,RRc,0
+Classical full,HDBSCAN,2,RRc,23
+Classical full,HDBSCAN,3,RRc,3
+Classical full,HDBSCAN,4,RRc,11
+Classical full,HDBSCAN,5,RRc,9
+Classical full,HDBSCAN,-1,RRd,15
+Classical full,HDBSCAN,0,RRd,0
+Classical full,HDBSCAN,1,RRd,0
+Classical full,HDBSCAN,2,RRd,0
+Classical full,HDBSCAN,3,RRd,3
+Classical full,HDBSCAN,4,RRd,0
+Classical full,HDBSCAN,5,RRd,0
+Classical full,HDBSCAN,-1,RRe,12
+Classical full,HDBSCAN,0,RRe,1
+Classical full,HDBSCAN,1,RRe,0
+Classical full,HDBSCAN,2,RRe,0
+Classical full,HDBSCAN,3,RRe,0
+Classical full,HDBSCAN,4,RRe,0
+Classical full,HDBSCAN,5,RRe,0

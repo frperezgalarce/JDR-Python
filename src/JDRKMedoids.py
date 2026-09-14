@@ -1,18 +1,22 @@
+from __future__ import annotations
+from src.validation import validate_distance_matrix, positive_integer
 import numpy as np
-import random
 from typing import Callable, List, Optional, Sequence, Union
-from concurrent.futures import ProcessPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
+from itertools import islice
 import os
 
 
 def _compute_pair(args):
-    """
-    Helper function for multiprocessing.
-    Must be defined at top level to be picklable.
-    """
-    i, j, file_i, file_j, distance_func = args
-    d = distance_func(file_i, file_j)
-    return i, j, d
+    i, j, file_i, file_j, distance_func, symmetric = args
+    forward = float(distance_func(file_i, file_j))
+    reverse = float(distance_func(file_j, file_i))
+    if not np.isfinite([forward, reverse]).all() or min(forward, reverse) < 0:
+        raise ValueError("Distance callback returned an invalid value.")
+    if symmetric and not np.isclose(forward, reverse, rtol=1e-10, atol=1e-12):
+        raise ValueError("Distance callback is asymmetric; refusing to mirror it.")
+    return i, j, forward, reverse
+
 
 class JDRKMedoids:
     """
@@ -45,7 +49,7 @@ class JDRKMedoids:
         max_iter: int = 100,
         random_state: Optional[int] = None,
         init_medoids: Optional[Sequence[int]] = None,
-        verbose: bool = False
+        verbose: bool = False,
     ):
         self.n_clusters = n_clusters
         self.max_iter = max_iter
@@ -61,24 +65,16 @@ class JDRKMedoids:
         self.n_iter_ = 0
         self.inertia_ = None
 
-        if self.random_state is not None:
-            random.seed(self.random_state)
-            np.random.seed(self.random_state)
-
-    def _validate_distance_matrix(self, D: np.ndarray):
-        if not isinstance(D, np.ndarray):
-            D = np.asarray(D)
-
-        if D.ndim != 2 or D.shape[0] != D.shape[1]:
-            raise ValueError("Distance matrix D must be square.")
-
-        if np.any(np.isnan(D)):
-            raise ValueError("Distance matrix D contains NaN values.")
-
-        return D
+    def _validate_distance_matrix(self, D):
+        return validate_distance_matrix(D)
 
     def _initialize_medoids(self, n: int) -> List[int]:
         if self.init_medoids is not None:
+            if any(
+                isinstance(i, bool) or not isinstance(i, (int, np.integer))
+                for i in self.init_medoids
+            ):
+                raise ValueError("Medoid indices must be integers.")
             if len(self.init_medoids) != self.n_clusters:
                 raise ValueError("init_medoids must have length equal to n_clusters.")
             if len(set(self.init_medoids)) != self.n_clusters:
@@ -87,21 +83,24 @@ class JDRKMedoids:
                 raise ValueError("init_medoids contains invalid indices.")
             return list(self.init_medoids)
 
-        return random.sample(range(n), self.n_clusters)
+        return self._rng.choice(n, self.n_clusters, replace=False).tolist()
 
     def _assign_clusters(self, D: np.ndarray, medoids: List[int]) -> np.ndarray:
         """
         Assign each point to the nearest medoid.
         """
-        distances_to_medoids = D[:, medoids]   # shape (n, K)
+        distances_to_medoids = D[:, medoids]  # shape (n, K)
         labels = np.argmin(distances_to_medoids, axis=1)
+        labels[np.asarray(medoids)] = np.arange(len(medoids))
         return labels
 
     def _build_clusters(self, labels: np.ndarray) -> List[List[int]]:
         clusters = [np.where(labels == k)[0].tolist() for k in range(self.n_clusters)]
         return clusters
 
-    def _update_medoids(self, D: np.ndarray, clusters: List[List[int]], medoids: List[int]) -> List[int]:
+    def _update_medoids(
+        self, D: np.ndarray, clusters: List[List[int]], medoids: List[int]
+    ) -> List[int]:
         """
         For each cluster C_k, choose the j in C_k minimizing sum_i in C_k d_ij.
         """
@@ -111,7 +110,9 @@ class JDRKMedoids:
             if len(cluster) == 0:
                 # Empty cluster: keep previous medoid
                 if self.verbose:
-                    print(f"Cluster {k} is empty. Keeping previous medoid {medoids[k]}.")
+                    print(
+                        f"Cluster {k} is empty. Keeping previous medoid {medoids[k]}."
+                    )
                 continue
 
             cluster_idx = np.array(cluster)
@@ -122,7 +123,9 @@ class JDRKMedoids:
 
         return new_medoids
 
-    def _compute_inertia(self, D: np.ndarray, labels: np.ndarray, medoids: List[int]) -> float:
+    def _compute_inertia(
+        self, D: np.ndarray, labels: np.ndarray, medoids: List[int]
+    ) -> float:
         """
         Sum of distances from each point to its assigned medoid.
         """
@@ -141,13 +144,18 @@ class JDRKMedoids:
         -------
         self
         """
+        positive_integer(self.n_clusters, "n_clusters")
+        positive_integer(self.max_iter, "max_iter")
+        self._rng = np.random.default_rng(self.random_state)
         D = self._validate_distance_matrix(D)
         n = D.shape[0]
 
         if self.n_clusters <= 0:
             raise ValueError("n_clusters must be positive.")
         if self.n_clusters > n:
-            raise ValueError("n_clusters cannot be greater than number of observations.")
+            raise ValueError(
+                "n_clusters cannot be greater than number of observations."
+            )
 
         medoids = self._initialize_medoids(n)
 
@@ -171,7 +179,6 @@ class JDRKMedoids:
             if new_medoids != medoids:
                 changed = True
                 medoids = new_medoids
-                print(changed, medoids)
 
             if self.verbose:
                 print(f"Iteration {it}: medoids = {medoids}")
@@ -214,116 +221,47 @@ class JDRKMedoids:
         if D_new_to_medoids.ndim != 2 or D_new_to_medoids.shape[1] != self.n_clusters:
             raise ValueError("D_new_to_medoids must have shape (n_new, n_clusters).")
 
+        if not np.isfinite(D_new_to_medoids).all() or np.any(D_new_to_medoids < 0):
+            raise ValueError("Prediction distances must be finite and nonnegative.")
         return np.argmin(D_new_to_medoids, axis=1)
-
 
     @staticmethod
     def build_distance_matrix_parallel(
-        files: Sequence[str],
-        distance_func: Callable[[str, str], float],
-        symmetric: bool = True,
-        verbose: bool = True,
-        n_jobs: int | None = None
-    ) -> np.ndarray:
+        files, distance_func, symmetric=True, verbose=True, n_jobs=None
+    ):
+        """Shared-grid built-in JDR, or bounded batches for arbitrary callbacks.
+
+        Both callback directions are checked. Threads avoid nested process pools
+        and notebook pickling restrictions. At most 128 pair tasks are queued.
         """
-        Build a pairwise distance matrix from a list of files in parallel.
+        from src.jdr import jdr, jdr_parallel, build_distance_matrix as shared_matrix
 
-        Parameters
-        ----------
-        files : sequence of str
-            Paths to light-curve files.
-        distance_func : callable
-            Function like jdr(file1, file2).
-        symmetric : bool, default=True
-            Whether distance is symmetric.
-        verbose : bool, default=True
-            Whether to print progress.
-        n_jobs : int or None, default=None
-            Number of parallel workers. If None, uses all available CPUs.
-
-        Returns
-        -------
-        D : np.ndarray of shape (n, n)
-            Pairwise distance matrix.
-        """
-
-        n = len(files)
-        D = np.zeros((n, n), dtype=float)
-
-        if n_jobs is None:
-            n_jobs = os.cpu_count()
-
-        tasks = []
-
-        if symmetric:
-            for i in range(n):
-                for j in range(i + 1, n):
-                    tasks.append((i, j, files[i], files[j], distance_func))
-        else:
-            for i in range(n):
-                for j in range(n):
-                    if i != j:
-                        tasks.append((i, j, files[i], files[j], distance_func))
-
-        total = len(tasks)
-
-        with ProcessPoolExecutor(max_workers=n_jobs) as executor:
-            futures = [executor.submit(_compute_pair, task) for task in tasks]
-
-            for k, future in enumerate(as_completed(futures), start=1):
-                i, j, d = future.result()
-
-                D[i, j] = d
-
-                if symmetric:
-                    D[j, i] = d
-
-                if verbose and (k % 100 == 0 or k == total):
-                    print(f"Computed {k}/{total} distances")
-
+        workers = min(4, os.cpu_count() or 1) if n_jobs is None else n_jobs
+        positive_integer(workers, "n_jobs")
+        if distance_func in (jdr, jdr_parallel):
+            return shared_matrix(files, n_jobs=workers)
+        files = list(files)
+        if not files:
+            raise ValueError("No files supplied.")
+        D = np.zeros((len(files), len(files)))
+        tasks = (
+            (i, j, files[i], files[j], distance_func, symmetric)
+            for i in range(len(files))
+            for j in range(i + 1, len(files))
+        )
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            while batch := list(islice(tasks, 128)):
+                for i, j, forward, reverse in pool.map(_compute_pair, batch):
+                    D[i, j], D[j, i] = forward, reverse
+        if verbose:
+            print(f"Computed matrix for {len(files)} objects")
         return D
 
     @staticmethod
-    def build_distance_matrix(
-        files: Sequence[str],
-        distance_func: Callable[[str, str], float],
-        symmetric: bool = True,
-        verbose: bool = True
-    ) -> np.ndarray:
-        """
-        Build a pairwise distance matrix from a list of files and a distance function.
-
-        Parameters
-        ----------
-        files : sequence of str
-            Paths to light-curve files.
-        distance_func : callable
-            Function like jdr(file1, file2) or jdr_parallel(file1, file2).
-        symmetric : bool, default=True
-            Whether distance is symmetric.
-        verbose : bool, default=False
-            Whether to print progress.
-
-        Returns
-        -------
-        D : np.ndarray of shape (n, n)
-        """
-        n = len(files)
-        D = np.zeros((n, n), dtype=float)
-
-        for i in range(n):
-            for j in range(i + 1, n):
-                d = distance_func(files[i], files[j])
-                D[i, j] = d
-                if symmetric:
-                    D[j, i] = d
-                else:
-                    D[j, i] = distance_func(files[j], files[i])
-
-                if verbose and (j % 20 == 0 or j == n - 1):
-                    print(f"Computed distances for pair ({i}, {j})")
-
-        return D
+    def build_distance_matrix(files, distance_func, symmetric=True, verbose=True):
+        return JDRKMedoids.build_distance_matrix_parallel(
+            files, distance_func, symmetric=symmetric, verbose=verbose, n_jobs=1
+        )
 
     def get_medoid_files(self, files: Sequence[str]) -> List[str]:
         """

@@ -1,0 +1,552 @@
+
+PAGE 1
+            Comparing irregular sampled time series
+                    using the Jensen-distance rate
+
+    JavierE.Contreras-Reyesa,∗ ,FranciscoPérez-Galarceb,CésarOjedac
+
+    aInstituto de Matemática, Física y Estadística, Facultad de Ingeniería y Negocios,
+  Universidad de Las Américas, Sede Viña del Mar, 7 Norte 1348, Viña del Mar, Chile
+    bFacultad de Ingeniería y Negocios, Universidad de Las Américas, Santiago, Chile
+  cEscuela de Estadística, Facultad de Ingeniería, Universidad del Valle, Cali, Colombia
+
+
+
+
+Abstract
+.
+
+Keywords:Irregulartimeseries;Jensen-distancerate;stationaryprocesses;
+Lomb–Scargleperiodogram;Thomsonmultitaper;stellarlightcurves
+
+
+
+1.Introduction
+   Akeycomponentinseveralmachinelearningmodelsisthedistancemet-
+ric,sincemanyalgorithmsrelyonameasureofclosenessorsimilaritytoop-
+erate. Thisconceptisfundamentalinunsupervisedlearningmethodssuch
+ask-means,hierarchicalclustering,andDensity-BasedSpatialClusteringof
+ApplicationswithNoise(DBSCAN),whichusedistancetodefineclustersor
+neighborhoodstructures.Similarly,insupervisedlearning,algorithmssuchas
+k-NearestNeighbors(kNN)relydirectlyondistancemetricstoidentifyand
+compareinstancesinthefeaturespace. Hence,thedefinitionandchoiceof
+thedistancemetricarecrucial,astheystronglyinfluencemodelperformance,
+interpretability,andcomputationalefficiency.
+   Inparticular,defininganappropriatedistancemetricforlightcurvesis
+challenging. These astronomical time series are often irregularly sampled,
+meaningthatobservationsarenottakenatuniformtimeintervals,andeach
+objectisobservedatdifferentepochs.Additionally,thenumberofobservations
+variesacrossobjects,andmeasurementsmaybeobtainedinmultiplephoto-
+metricbands,eachwithitsownsamplingpattern. Everyobservationalso
+
+
+  ∗Corresponding author. Email address: jecontrr@uc.cl
+
+PAGE 2
+carriesanassociatedphotometricuncertainty,whichintroducesheteroscedas-
+ticnoiseintothedata.Furthermore,theapparentmagnitudeofastardepends
+onitsdistance,complicatingdirectcomparisonsbetweenobjects. Thesefac-
+torsmakeitchallengingtodefineaunique,consistentmeasureofsimilarity
+thataccuratelycapturestheintrinsicvariabilityandperiodicityoflightcurves
+acrossdiverseobservationalconditions.
+   Accordingtorecentreviews, thedistancemetricsemployedinmachine
+learningmodelsforbothsupervisedandunsupervisedlearningarecommonly
+derivedfromeitherhand-craftedfeaturesordeeplearningembeddings. Both
+approachespresentcertainlimitations.Methodsbasedonhand-craftedpredic-
+torsdependheavilyonthespecificsetoffeaturesselected,whichmaynotfully
+capturetheunderlyingvariabilityortemporaldynamicsofthedata. Con-
+versely,approachesbasedondeeplearningembeddingsrelyonthetraining
+datausedtolearntherepresentations;thus,theirperformanceandgeneraliza-
+tioncapacityareconstrainedbythediversity,quality,andbiasesofthedataset
+employedduringmodeltraining.
+   Weproposeanad-hocdistancemetricforpulsatinglightcurves,basedon
+theJensen–DistanceRate(JDR)estimator(Contreras-Reyes2025).Thispro-
+posaladdressesseveralcommonchallengesintheautomaticanalysisofphoto-
+metricdata,includingirregulartemporalsampling,varyingtime-serieslengths,
+photometricmeasurementerrors,andapparentmagnitudedifferencesdueto
+distanceorinterstellarextinction.Themetricisbasedoncross-correlationbe-
+tweenbothsignalsandiscomputedinthespectraldomain,allowingthecom-
+parisonoflightcurvesindependentlyoftheirapparentmagnitudeandwith
+robustnesstonoise,makingitparticularlyusefulforcatalogswithlowsignal-
+to-noiseratios. Inaddition,weanalyzeitsstabilityundervariationsinthe
+numberofobservationsanditsextensiontomultiplephotometricbands(e.g.,
+IandVbandsfromtheOGLEIIIproject),showingthatitcanintegratespec-
+tralinformationacrossbandsandrelatetophysicalpropertiessuchasstellar
+color. Finally,wediscussitscomputationalfeasibilitybycomparingdifferent
+spectralestimators(Lomb–Scargle,Thompsonmultitaperwithvaryingnum-
+bersoftapers),emphasizingthetrade-offbetweenaccuracyandcomputational
+cost.Thismetricispresentedasanoveltoolthatbuildsonrecentadvancesin
+machinelearningappliedtoastronomicaltimeseries,providinganadhocsim-
+ilaritymeasuresuitableforbothunsupervisedandsupervisedmethodssuchas
+k-meansandk-NN,therebycontributingtothedevelopmentofmorerobust
+andphysicallyinterpretabletechniquesfortheanalysisofvariablestars.
+   Therestofthispaperisorganizedasfollows. Section2reviewsrelated
+workondistancemetricsappliedtovariablestardataanalysis, highlight-
+
+                                         2
+
+PAGE 3
+ingkeyfindingsandcurrentchallenges. Section3introducesthetheoretical
+backgroundnecessarytounderstandtheproposeddistancemetric. Section4
+presentsthenewdistancemetricanddescribesthecontextsinwhichitcanbe
+effectivelyincorporated. Section5reportstheexperimentalresultsandper-
+formanceevaluation.Finally,Section6summarizesthemainconclusionsand
+outlinesdirectionsforfutureresearch.
+
+2.Backgroundtheory
+    Letx(T           t)andy(T             t),t= 1,2,...,n,betwoweaklystationarytimeseries
+withzeromean. Processx(T            t)isregularlysampledif∆t=T             t −T   t−1  is
+constantforallt. Inliterature,aclassicalestimatorofspectraldensityfor
+weaklystationarytimeserieshasbeentheSchusterperiodogram; however,
+thislacksofimportantstatisticalpropertiessuchasbiasandinconsistency
+(variancenotdecreaseswhennincreases)(Springfordetal.2020).Moreover,
+Schusterperiodogramhasfailstodetectspeaksinseasonaltimeseriesifthey
+wereirregularlysampled(∆tisnotconstant)(Vioetal.2013).Forirregularly
+timeseries,Lomb–Scargleperiodogramhasbeenconsideredasfollows.
+
+2.1. Lomb–Scargleperiodogram
+    TheLomb–Scargleperiodogram(LSP)(seee.g.VanderPlas2018;Spring-
+fordetal.2020)wasderivedfromLeastSquareestimationmethodasapath
+toestimatethespectraldensityofairregularlytimeseries.Itmainlyrequires
+cosineandsinecomponentsoftheregression,andsolveaminimizationprob-
+lemoftheabsoluteerrorbetweenoriginaltimeseriesandregression.TheLSP
+estimatorisgivenby
+                  Pn                         2     Pn                        2 
+     bfx(ω) =     1   t=1 x(T    t)cos(ωT       ∗t )  t=1 x(T    t)sin(ωT      ∗t ),  (1)
+               2        Pn                              Pn
+                           t=1 cos2(ωT  ∗t )        +      t=1 sin2(ωT  ∗t )
+
+withfrequencyω= 2πϖ,ϖ >0,T                              ∗t  =T   t−τ(ω),and
+                                              Pn     ωT          t)
+                       τ(ω) =       1         Pnt=1 sin(2         .
+                                 2ω  arctan      t=1 cos(2ωT          t)
+
+    TheLSPestimatorhassomelimitationsinpracticalastronomicalapplica-
+tionswhereirregulartimeseriesweresampled,forexample,Vioetal.(2013)
+reportedthatLSPprovidessimilarresultsthanothersimplestmethodssuch
+
+                                             3
+
+PAGE 4
+Schusterperiodogram,becausethesemethodsnotallowedtoidentifytheperi-
+odicsignalfrequenciesgiventheinterferencebetweenthetruepeaksandthose
+duetosampling.Inaddition,Springfordetal.(2020)alsoreportedthatLSP
+sufferswiththesamebias,inconsistency,andspectralleakageproblemsthat
+ofSchusterperiodogram,thustheyproposedtheThomsonmultitaperspectral
+estimatortotradeoffbiasandvarianceforperiodicfrequencies.
+
+2.2. Thomsonmultitaperspectralestimator
+    Inthissection,itisconsideredthetapersw      (k)t ,t= 1,...,n,k= 1,...,m,as
+asequenceofoptimalsmoothedspectralwindowsforFourieranalysis(Spring-
+fordetal.2020;Dodson-RobinsonandHaley2024). Thetapersw                                             (k)t  areob-
+tainedbysolvingthefollowingsystem
+
+                         nX sin(2πωb[T             t−T   r])
+                                 π[T    t−T   r]      w(k)r   =λ   (k)  w(k)t  ,              (2)
+                        r=1
+wherebisthebandwidth,suchthatoscillationsinthetimeseriesreachpeaks
+inthespectrumestimatewithfullwidthm= 2b. Solutionofsystem(2)
+providesmindependentweightedSchusterperiodogramsgivenby
+
+                                         nX
+                           ef(k)x  (ω) =    w(k)t  x(T    t)e −i2πωT      t,                (3)
+
+                                        t=1
+andthemultitaperspectrumestimatoristheaverageofthemquantities
+ef(k)x  (ω). ToobtaintheLomb–Scargleperiodogrambasedontapersw          (k)t ,itis
+definedtheinterpolatedtimeseriesbythevectorproductbetweentapersand
+originalirregulartimeseries,i.e.,u       (k)t    =w    (k)t  ×x   t,andreplaceeachoneon
+LSP(1).Then,themultitaperspectrumestimatorbasedonLSPis
+
+                                               mX
+                                efu(ω) =     1     bfu(k)  (ω).                    (4)
+                                          m   k=1
+
+    Considering several applications in astronomy,Springford et al.(2020)
+provedthatLSPestimatorbasedonThomsonmultitapersolvethestatis-
+ticalproblemsmentionedlatter.Inthenextsection,latterbothmethodsare
+consideredtodevelopedtheJDRbetweentwoweaklystationarysignals,and
+showsomenumericalexamplestocomparetheirperformances.
+
+
+
+                                             4
+
+PAGE 5
+3.Methodology
+
+    AfterassessingtheadvantagesofJDRonlightcurves,Iproposedevelop-
+ingamultibandkNNJDRclassifierasfollows: 1)Selecttheobservationsin
+eachbandusinganadhocselectionmethod. 2)ComputetheJDRforeach
+objectinthetrainingset(possiblyadoptingahierarchicalapproachtoreduce
+computationalcost). 3)Automaticallydeterminetheoptimalvalueofk. 4)
+Properlymergethedistancescomputedforeachband.
+    WeproposedtheJDR(Contreras-Reyes2025)asadiscrepancymeasure
+betweenx(T           t)andy(T             t).JDRiswrittenintermsofintegralsofspectrumand
+cross-spectrumdensitiesgivenby
+                                  Z  2π n                             o
+                Jα(X,Y) =         β2π     fx(ω)+f        y(ω)−2f            xy(ω)dω,        (5)
+                                    0
+withβ=α(1−α),0< α <1. Itispossibletodefinethecross-spectrum
+betweenx      tandy       t(Rehfeldetal.2011)as
+
+                                 fxy(ω) =f        x(ω)fy(ω),                     (6)
+
+where  fy(ω)denotestheconjugateoff          y(ω).
+    JDR(5)representstheaveragedistancebetweenbothstationaryprocesses
+giventhatisanintegralwithrespecttofrequencydomain. Notethatifx  t
+andy       t areuncorrelated,thesquarecoherencefunction(seee.gSchulzand
+Stattegger1997)iszeroforallωandcomputationofJDRisreducedonlyto
+integralsofLSPmarginals. Inaddition,giventhatJDRisbasedonJensen-
+variancedistance(Kharazmietal.2024),theJDRhasthefollowingproperties:
+a)positiveness,b)symmetry,c)triangleinequality,d)invarianceunderrescal-
+ingandtransformation.
+    Basedonestimator(1),theestimatedJDRbasedonLSPisstraightfor-
+ward:                             Z  2π nbfx(ω)+ bfy(ω)−2  bfxy(ω)    o
+                bJα(X,Y) =         β2π                                  dω.        (7)
+                                    0
+ForLSPbasedonThomsonmultitaper(4),theestimatedJDRisderivedas
+
+                            mX
+       eJα(U,V)   =           1 bJα(U  (k)  ,V (k)  )                              (8)
+                       m   k=1
+                               mX Z  2π nbfu(k)  (ω)+ bfv(k)  (ω)−2  bfu(k)  v(k)  (ω)o
+                   =     β2πm                                                     dω,
+                              k=1   0
+                                             5
+
+PAGE 6
+withv         (k)t   =w    (k)t  ×y   t.
+   Estimator(7)involvesthecomputationofonly3integrals,whileestimator
+(8)requiresthecomputationof3m= 6bintegrals.EachintegralofLSPcould
+bequicklycomputedusingtheintegratefunctionofRsoftware(Piessens
+etal.1983). Thismethodprovedtobemoreeffectivethatotherssuchas
+MonteCarloone.
+   Consideringboth(7)and(8),itispossibletoconsideredamixedestimator
+thatinvolvesoriginalx               tandtaperedu         (k)t  timeseriesas
+
+                       mX
+  eJα(X,U)   =           1bJα(X,U       (k)  )                                  (9)
+                  m   k=1"Z  2π                                                      #
+                                              mX  Z  2πnbfu(k)  (ω)−2  bfxu(k)  (ω)o
+              =    β          bfx(ω)dω+           1                               dω   ,
+                  2π     0                m  k=1   0
+
+whichinvolves2m+1 = 4b+1integrals.Estimator(9)notmeasuresthedis-
+tancebetweentwoirregulartimeseries,butmeasuresthediscrepancybetween
+anirregulartimeserieswithitstaperedversion,i.e.,thedifferencebetween
+LSPandThomsonmultitaperestimator,bothappliedtothesamex          t.
+
+4.JDR-basedk-medoidsclustering
+   SincetheproposedJDRisdefinedasapairwisedissimilaritybetweenir-
+regularlysampledlightcurves,anaturalextensiontounsupervisedlearning
+isamedoid-basedclusteringprocedure. Incontrasttok-means,whichre-
+quiresacentroidrepresentationanditerativeupdatesinavectorspace—thus
+recomputingdistancesbetweeneachobservationandallcentroidsatevery
+iteration—k-medoidsoperatesexclusivelyonpairwisedissimilarities. Conse-
+quently,itcanbedirectlyappliedtotheprecomputedJDRmatrix. Inthis
+framework,eachclusterisrepresentedbyanobservedlightcurve,selectedas
+themedoidthatminimizesthetotalwithin-clusterJDRdissimilarity.
+   LetKdenotethenumberofclusters,andletm                 1,...,mK ∈ Nbethe
+indicesoftheselectedmedoids.GiventheJDR-baseddissimilarityd  ijbetween
+lightcurvesiandj,theJDRk-medoidsproblemcanbeformulatedas
+
+                                          nX
+                              m1,...,mKmin   k=1,...,K     dimk.                   (10)min
+                                         i=1
+   Thisformulationassignseachlightcurvetoitsclosestmedoidandmini-
+mizesthetotaldissimilarity.
+                                            6
+
+PAGE 7
+    Anequivalentclusterwiseformulationisgivenby
+
+                                                          KX  X
+                                        min                         dimk,               (11)
+                               {C  1,...,CK},{m      1,...,mK}k=1i∈C   k
+
+subjectto
+                                                                      K[
+                   mk∈C   k,    Ck∩C   ℓ =∅(k̸=ℓ),                        Ck =N.        (12)
+                                                                     k=1
+    Tosolvethis,weusetheprocedurepresentedinAlgorithm1.
+
+Algorithm1IterativeJDR-basedk-medoids
+Require:SetoflightcurvesN={1,...,n},numberofclustersK,JDR
+     dissimilaritymatrixD= (d                   ij)
+Ensure:Setofmedoids{m                                       1,...,mK}andclusters{C                     1,...,CK}
+ 1:Selectaninitialsetofmedoids{m                       1,...,mK}⊆N
+ 2:Setchanged←true
+ 3:whilechangeddo
+ 4:  Setchanged←false
+ 5:  foreachi∈Ndo                                             ▷Assignmentstep
+ 6:     Assignitoitsnearestmedoid:
+
+                                        c(i)←arg   min k=1,...,K     dimk
+
+
+ 7:  endfor
+ 8:  DefineclustersC                  k←{i∈N:c(i) =k}forallk= 1,...,K
+ 9:  foreachk= 1,...,Kdo                              ▷Medoidupdatestep
+10:    Compute                                               X
+                                         m⋆k←argminj∈C    k       dij
+                                                            i∈C   k
+11:    ifm        ⋆k̸=m   kthen
+12:             m     k←m    ⋆k
+13:              changed←true
+14:    endif
+15: endfor
+16:endwhile
+17:return{m                       1,...,mK}and{C             1,...,CK}
+
+
+                                                    7
+
+PAGE 8
+5.Simulations
+5.1. IrregularAutoregressiveprocess
+    Inthissection,weconsidertheirregularAutoregressive(iAR)modelpro-
+posedbyEyheramendyetal.(2018)forastronomicaltimeseries. Denote
+{y(T      t)}anobservationmeasuredatanincreasingsequenceofobservational
+times{T             t},t= 1,...,n.TheiARprocessisdefinedas
+
+                                   y(T    t) =ϕ   ∆t  y(T    t−1   )+ε(T       t),                 (13)
+
+where{ε(T                  t)}areindependentrandomvariablessuchthatE[ε(T                     t)] = 0and
+E[ε    2(T t)] =σ    2(1−ϕ        2∆t   ).Authorsprovedthatprocess(13)isweaklystationary
+andergodic.
+    Basedonprocess(13),thenegativelog-likelihoodofiARprocesscanbe
+writtenas
+
+                                                          nX
+               ℓ(θ|{y(T             t)}) =    n2 log(2π)+      12logν(T          t)+ e2(T t)ν(T    t),     (14)
+                                                         t=1
+withθ= (σ,ϕ),
+                                     (
+                          e(T    t) =   y(T    1),                       t= 1,
+                                        y(T    t)−ϕ     ∆t  y(T    t−1   ),    t>1;
+
+and                                      (
+                              ν(T    t) =   σ2,                  t= 1;
+                                            σ2(1−ϕ        2∆t   ),    t>1.
+Function(14)isnumericallymaximizedtoobtainthemaximumlikelihood
+estimator(MLE)bϕbasedon
+                                                                       2
+                                              nX    y(T    t)−by(T            t)
+                                 bσ   2 = 1n           1− bϕ2∆t          ,
+                                             t=1
+with                                       (
+                               by(T      t) =0,                  t= 1,
+                                             bϕ∆t  y(T    t−1   ),    t>1.
+
+Eyheramendyetal.(2018)shownthatMLE    bϕhasanasymptoticnormaldis-
+tribution.
+                                                     8
+
+PAGE 9
+                                    Figure1:.
+
+
+
+5.2. IrregularAutoregressiveMovingAverageprocess
+   Ojedaetal.(2021,2023);GodoyandOjeda(2025)
+
+6.Lightcurvesdiscoveriesbasedondistances
+   Variablestarsarecrucialcelestialobjectsforunderstandingthestructure
+oftheuniverse,assomeofthemactasstandardcandlesfordistancemeasure-
+ments(e.g.RRLyraeandCepheids).Others,suchasDeltaScutistars,play
+afundamentalroleinasteroseismology,sincetheirpulsationsprovidevaluable
+informationabouttheinternalstructureandevolutionarystateofstars.The
+observedvariabilitycanoriginatefrominternalphysicalprocessesorexternal
+causes,suchasorbitingplanetsorthepresenceofbinaryormultiplesystems.
+Aparticularcaseofvariablestarscorrespondstopulsatingstars,whosebright-
+nesschangesperiodicallyduetophysicaloscillationsintheirouterlayers. In
+thesestars,theequilibriumbetweengravitationalcontractionandradiation
+pressureisregularlydisturbed, causingcyclicexpansionsandcontractions.
+Thisprocessleadstovariationsinluminosity,temperature,andradiusthat
+areobservableintheirlightcurves. Relevantvariablesstarsbelongtothis
+category,suchasRRLyrae,Cepheids,Mira,anddeltascuti.
+   Giventheenormousamountofdatacollecteddailyfrommodernobserva-
+tories,automaticprocessingandknowledgeextractionhavebecomeessential
+
+                                         9
+
+PAGE 10
+incontemporaryastronomy. Inthiscontext,machinelearninghasemerged
+asacornerstonemethodologyforderivingscientificinsightsfromlightcurves.
+Techniquessuchassupervised, unsupervised, andsemi-supervisedlearning
+havebeensuccessfullyappliedtovarioustasks,includingautomaticclassifica-
+tion,anomalydetection,andpatterndiscovery. Overtime,theseapproaches
+haveevolvedfromhand-craftedfeatureengineeringtowarddeeplearning-based
+representations,enablingmorerobustandscalableanalysesofastronomical
+time-seriesdata. Despitetheseadvances,severalchallengesremaintofully
+exploitthevastknowledgecontainedwithinthesemassivedatasets—forex-
+ample,theclassificationofpoorlyrepresentedobjects(e.g.DeltaScutistars),
+theprocessingofsignalswithlowsignal-to-noiseratios,andthemitigationof
+selectionandobservationalbiasesthatcansignificantlyaffectmodelperfor-
+manceandscientificinterpretation.
+
+7.Conclusionsandfurtherworks
+Appendix
+
+Dataandsoftwareavailability
+   ThestellarlightcurvesandRcodesusedinthisworkareavailableat
+https://github.com/javiersoulforged/JDR.
+
+Funding
+
+   Nofundsreceived.
+
+Conflictsofinterest/Competinginterests
+   Theauthordeclaresthattheyhavenoknownconflict/competingofinterest
+thatcouldhaveappearedtoinfluencetheworkreportedinthispaper.
+
+References
+
+Akhmetali,A.,Zhunuskanov,A.,Sakan,A.,Zaidyn,M.,Namazbayev,T.,
+  Turlykozhayeva, D., Ussipov, N. (2025). Luminis Stellarum et Machina:
+  Applications of machine learning in light curve analysis. arXiv preprint
+  arXiv:2504.10038v2.
+
+Babu,P.,Stoica,P.(2010).Spectralanalysisofnonuniformlysampleddata-
+  areview.DigitalSignalProcessing20(2),359–378.
+                                        10
+
+PAGE 11
+Badiane,M.,Cunningham,P.(2022).Anempiricalevaluationofkernelsfor
+  timeseries.ArtificialIntelligenceReview55(3),1803–1820.
+
+Bourguignon,S.,Carfantan,H.,Böhm,T.(2007).SparSpec: anewmethod
+  forfittingmultiplesinusoidswithirregularlysampleddata.Astronomy&
+  Astrophysics462(1),379–387.
+
+Chaini,S.,Mahabal,A.,Kembhavi,A.,Bianco,F.B.(2024).Lightcurveclas-
+  sificationwithDistClassiPy:Anewdistance-basedclassifier.Astronomy&
+  Computing48,100850.
+
+Contreras-Reyes,J.E.(2025).Jensen-distancerateforstationarytimeseries
+  basedoncross-spectralmethods.CommunicationsinNonlinearScienceand
+  NumericalSimulation149,108926.
+
+Cover,T.M.,Thomas,J.A.(2006).ElementsofInformationTheory.Wiley&
+  Son,Inc.,NewYork,USA.
+
+Donoso-Oliva,C.,Becker,I.,Protopapas,P.,Cabrera-Vives,G.,Cádiz-Leyton,
+  M.,Moreno-Cartagena,D.(2025).Astromer2: Afoundationalmodelfor
+  light curve embeddings. Astronomy & Astrophysics, accepted (February
+  2025).
+
+Dodson-Robinson,S.,Haley,C.(2024).Optimalfrequency-domainanalysis
+  forspacecrafttimeseries: Introducingthemissing-datamultitaperpower
+  spectrumestimator.TheAstronomicalJournal167(1),22.
+
+Duchesne,P.,Pacurar,M.(2008).Evaluatingfinancialtimeseriesmodelsfor
+  irregularlyspaceddata:aspectraldensityapproach.Computers&Opera-
+  tionsResearch35(1),130–155.
+
+Eyheramendy,S.,Elorrieta,F.,Palma,W.(2018).Anirregulardiscretetime
+  seriesmodeltoidentifyresidualswithautocorrelationinastronomicallight
+  curves.MonthlyNoticesoftheRoyalAstronomicalSociety481(4),4311–
+  4322.
+
+Fotopoulou,S.(2024).Areviewofunsupervisedlearninginastronomy.As-
+  tronomy&Computing48,100851.
+
+Godoy,D.A.,Ojeda,C.A.(2025).AnAutoregressiveMovingAverageModel
+  forTimeSerieswithIrregularTimeIntervals.ComputerSciences&Math-
+  ematicsForum11,8.
+
+                                       11
+
+PAGE 12
+Huijse,P.,Estévez,P.A.,Förster,F.,Daniel,S.F.,Connolly,A.J.,Protopa-
+  pas,P.,Carrasco,R.,Príncipe,J.C.(2018).Robustperiodestimationusing
+  mutualinformationformultibandlightcurvesinthesynopticsurveyera.
+  AstrophysicalJournalSupplementSeries236(1),12.
+
+Kharazmi,O.,Contreras-Reyes,J.E.,Basirpour,M.B.(2024).Jensen-variance
+  distancemeasure:Aunifiedframeworkforstatisticalandinformationmea-
+  sures.ComputationalandAppliedMathematics43(3),144.
+
+Mahato, V., O’Reilly, M., Cunningham, P.(2020).Acomparisonofk-NN
+  methodsfortimeseriesclassificationandregression.InProceedingsofthe
+  InternationalConferenceonMachineLearningandDataMining.
+
+Ojeda,C.,Palma,W.,Eyheramendy,S.,Elorrieta,F.(2021).Anovelfirst-
+  orderautoregressivemovingaveragemodeltoanalyzediscrete-timeseries
+  irregularlyobserved.InInternationalConferenceonTimeSeriesandFore-
+  casting,pp.91–103.Cham:SpringerInternationalPublishing.
+
+Ojeda,C.,Palma,W.,Eyheramendy,S.,Elorrieta,F.(2023).Extendingtime-
+  seriesmodelsforirregularobservationalgapswithamovingaveragestruc-
+  tureforastronomicalsequences.RASTechniquesandInstruments2(1),33–
+  44.
+
+Paparrizos, J., Li, H., Yang, F., Wu, K., D’Hondt, J.E., Papapetrou, O.
+  (2024).Asurveyontime-seriesdistancemeasures.ACMComputingSur-
+  veys,arXiv:2412.20574.
+
+Piessens, R., deDoncker-Kapenga, E., Uberhuber, C., Kahaner, D.(1983).
+  Quadpack: a Subroutine Package for Automatic Integration. Springer-
+  Verlag,Berlin,Germany.
+
+Rehfeld,K.,Marwan,N.,Heitzig,J.,Kurths,J.(2011).Comparisonofcor-
+  relationanalysistechniquesforirregularlysampledtimeseries.Nonlinear
+  ProcessesinGeophysics18(3),389–404.
+
+Scargle,J.D.(1989).Studiesinastronomicaltimeseriesanalysis.III-Fourier
+  transforms,autocorrelationfunctions,andcross-correlationfunctionsofun-
+  evenlyspaceddata.AstrophysicalJournal,Part1343,874–887.
+
+Schulz,M.,Stattegger,K.(1997).SPECTRUM:Spectralanalysisofunevenly
+  spacedpaleoclimatictimeseries.Computers&Geosciences23(9),929–945.
+
+                                        12
+
+PAGE 13
+Springford, A., Eadie, G.M., Thomson, D.J.(2020).ImprovingtheLomb–
+  ScargleperiodogramwiththeThomsonmultitaper.TheAstronomicalJour-
+  nal159(5),205.
+
+VanderPlas,J.T.(2018).UnderstandingtheLomb–Scargleperiodogram.The
+  AstrophysicalJournalSupplementSeries236(1),16.
+
+Vio,R.,Diaz-Trigo,M.,Andreani,P.(2013).Irregulartimeseriesinastronomy
+  andtheuseoftheLomb–Scargleperiodogram.AstronomyandComputing
+  1,5–16.
+
+Wachman,G.,Khardon,R.,Protopapas,P.,Alcock,C.R.(2009).Kernelsfor
+  periodictimeseriesarisinginastronomy.InProceedingsoftheEuropean
+  ConferenceonMachineLearning(ECML),489–505.
+
+Xu,K.,Qin,M.,Sun,F.,Wang,Y.,Chen,Y.-K.,Ren,F.(2021).Learning
+  inthefrequencydomain.InProceedingsoftheIEEE/CVFConferenceon
+  ComputerVisionandPatternRecognition(CVPR),1740–1750.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                      13

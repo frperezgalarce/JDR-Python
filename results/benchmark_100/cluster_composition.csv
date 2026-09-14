@@ -1,0 +1,46 @@
+model,cluster,catalog_type,count
+K-medoids,0,RRab,55
+K-medoids,1,RRab,1
+K-medoids,2,RRab,12
+K-medoids,0,RRc,0
+K-medoids,1,RRc,25
+K-medoids,2,RRc,6
+K-medoids,0,RRd,0
+K-medoids,1,RRd,1
+K-medoids,2,RRd,0
+K-means,0,RRab,1
+K-means,1,RRab,56
+K-means,2,RRab,11
+K-means,0,RRc,25
+K-means,1,RRc,0
+K-means,2,RRc,6
+K-means,0,RRd,1
+K-means,1,RRd,0
+K-means,2,RRd,0
+Average linkage,0,RRab,66
+Average linkage,1,RRab,1
+Average linkage,2,RRab,1
+Average linkage,0,RRc,6
+Average linkage,1,RRc,25
+Average linkage,2,RRc,0
+Average linkage,0,RRd,0
+Average linkage,1,RRd,1
+Average linkage,2,RRd,0
+DBSCAN,0,RRab,1
+DBSCAN,1,RRab,51
+DBSCAN,-1,RRab,16
+DBSCAN,0,RRc,25
+DBSCAN,1,RRc,0
+DBSCAN,-1,RRc,6
+DBSCAN,0,RRd,1
+DBSCAN,1,RRd,0
+DBSCAN,-1,RRd,0
+HDBSCAN,0,RRab,66
+HDBSCAN,1,RRab,1
+HDBSCAN,-1,RRab,1
+HDBSCAN,0,RRc,4
+HDBSCAN,1,RRc,26
+HDBSCAN,-1,RRc,1
+HDBSCAN,0,RRd,0
+HDBSCAN,1,RRd,1
+HDBSCAN,-1,RRd,0

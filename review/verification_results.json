@@ -1,0 +1,183 @@
+{
+  "dbscan_reference_cases_passed": 90,
+  "invalid_matrix_accepted": {
+    "negative": {
+      "dbscan": false,
+      "kmedoids": true
+    },
+    "asymmetric": {
+      "dbscan": true,
+      "kmedoids": true
+    },
+    "nonzero_diagonal": {
+      "dbscan": true,
+      "kmedoids": true
+    },
+    "infinite": {
+      "dbscan": true,
+      "kmedoids": true
+    }
+  },
+  "zero_distance_kmedoids": {
+    "medoids": [
+      0,
+      1
+    ],
+    "clusters": [
+      [
+        0,
+        1,
+        2
+      ],
+      []
+    ]
+  },
+  "tau_orthogonality": {
+    "legacy_cross_term": 0.42278125854277115,
+    "standard_cross_term": 4.440892098500626e-16
+  },
+  "float32_spacing_days": {
+    "50000.0": 0.00390625,
+    "2454833.0": 0.25
+  },
+  "r_nonconvergence_accepted": 1.0,
+  "r_attempts": 1,
+  "reader": {
+    "OGLE-BLG-RRLYR-00001.dat": {
+      "raw_points": 95,
+      "jdr_points": 200,
+      "span": 932.1778100000001,
+      "fmax": 0.10727567093664242
+    },
+    "OGLE-BLG-RRLYR-00002.dat": {
+      "raw_points": 108,
+      "jdr_points": 200,
+      "span": 932.1778100000001,
+      "fmax": 0.10727567093664242
+    }
+  },
+  "actual_pair": {
+    "files": [
+      "data/OGLE-BLG-RRLYR-00001.dat",
+      "data/OGLE-BLG-RRLYR-00002.dat"
+    ],
+    "J_ab": 0.007940107789427947,
+    "J_ba": 0.007940107789427947,
+    "relative_difference": 0.0,
+    "warning_count": 6,
+    "warning_types": [
+      "IntegrationWarning"
+    ]
+  },
+  "D_folded.npy": {
+    "shape": [
+      5,
+      5
+    ],
+    "finite": true,
+    "min": 0.0,
+    "max": 10.374760613610825,
+    "symmetric": true,
+    "offdiag_quantiles": [
+      3.400816181175963,
+      5.942322561417578,
+      9.258176426123814,
+      10.284772712545916,
+      10.374760613610825
+    ]
+  },
+  "notebooks/D_folded.npy": {
+    "shape": [
+      100,
+      100
+    ],
+    "finite": true,
+    "min": 0.0,
+    "max": 0.1939992880592881,
+    "symmetric": true,
+    "offdiag_quantiles": [
+      0.0009576935433447782,
+      0.007324433396130162,
+      0.008573727169679626,
+      0.010970118447305478,
+      0.1939992880592881
+    ]
+  },
+  "metadata_reorder_probe": {
+    "actual_file_order": [
+      "A",
+      "B"
+    ],
+    "returned": [
+      "class_B",
+      "class_A"
+    ],
+    "expected": [
+      "class_A",
+      "class_B"
+    ]
+  },
+  "results/table.csv": {
+    "rows": 5000,
+    "top_rows": [
+      {
+        "Unnamed: 0": 0,
+        "eps": 3.796396396396396,
+        "min_samples": 2,
+        "purity": 1.0,
+        "n_clusters": 2,
+        "n_noise": 1
+      },
+      {
+        "Unnamed: 0": 1,
+        "eps": 3.896296296296296,
+        "min_samples": 2,
+        "purity": 1.0,
+        "n_clusters": 2,
+        "n_noise": 1
+      },
+      {
+        "Unnamed: 0": 2,
+        "eps": 3.996196196196196,
+        "min_samples": 2,
+        "purity": 1.0,
+        "n_clusters": 2,
+        "n_noise": 1
+      }
+    ]
+  },
+  "notebooks/results/table.csv": {
+    "rows": 9000,
+    "top_rows": [
+      {
+        "Unnamed: 0": 0,
+        "eps": 0.001192072072072,
+        "min_samples": 2,
+        "purity": 0.8,
+        "n_clusters": 1,
+        "n_noise": 95
+      },
+      {
+        "Unnamed: 0": 1,
+        "eps": 0.001192072072072,
+        "min_samples": 3,
+        "purity": 0.8,
+        "n_clusters": 1,
+        "n_noise": 95
+      },
+      {
+        "Unnamed: 0": 2,
+        "eps": 0.001202081081081,
+        "min_samples": 2,
+        "purity": 0.8,
+        "n_clusters": 1,
+        "n_noise": 95
+      }
+    ]
+  },
+  "band_selection_controlled_backend": {
+    "J_ab": 0.7956951379879308,
+    "J_ba": 0.39780778025819236,
+    "note": "Unit probe with constant unit auto-spectra and zero cross-spectrum; not a physical-data quadrature result."
+  }
+}

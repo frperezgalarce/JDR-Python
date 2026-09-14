@@ -1,0 +1,6 @@
+numpy>=2.0,<3
+scipy>=1.14,<2
+pandas>=2.2,<4
+scikit-learn>=1.5,<2
+astropy>=7,<9
+matplotlib>=3.9,<4

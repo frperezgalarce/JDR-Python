@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "executed_code_cells": 8,
+  "notebook_sha256": "5690d8bc815a4ad1e31b613f3c4531d918f63c7cc1f14714cc79e686430b6119",
+  "source_and_input_hashes_match": true,
+  "all_cluster_counts_match": true,
+  "n_tests_passed": 34,
+  "figure_exports": [
+    {
+      "figure": "figure_1_cohort_geometry",
+      "png_dimensions": [
+        4322,
+        3023
+      ],
+      "png_dpi": [
+        599.9988,
+        599.9988
+      ],
+      "pdf_embedded_fonts": true,
+      "svg_editable_text": true
+    },
+    {
+      "figure": "figure_2_model_comparison",
+      "png_dimensions": [
+        4322,
+        2811
+      ],
+      "png_dpi": [
+        599.9988,
+        599.9988
+      ],
+      "pdf_embedded_fonts": true,
+      "svg_editable_text": true
+    },
+    {
+      "figure": "figure_3_cluster_composition",
+      "png_dimensions": [
+        4322,
+        1606
+      ],
+      "png_dpi": [
+        599.9988,
+        599.9988
+      ],
+      "pdf_embedded_fonts": true,
+      "svg_editable_text": true
+    },
+    {
+      "figure": "figure_4_numerical_sensitivity",
+      "png_dimensions": [
+        4322,
+        1535
+      ],
+      "png_dpi": [
+        599.9988,
+        599.9988
+      ],
+      "pdf_embedded_fonts": true,
+      "svg_editable_text": true
+    }
+  ],
+  "visual_review": "Four preview figures inspected for labels, legends, axes and 500-object counts. Dense heatmap rasterized at 600 dpi; other marks and text retain vector form."
+}

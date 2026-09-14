@@ -1,0 +1,197 @@
+{
+  "scope": "Full local 100-object census; exploratory in-sample comparison, not held-out accuracy.",
+  "protocol": {
+    "version": 1,
+    "n_objects": 100,
+    "seed": 20260912,
+    "n_clusters": 3,
+    "n_init": 20,
+    "dbscan_min_samples": 5,
+    "dbscan_eps_quantile": 0.7,
+    "hdbscan_min_cluster_size": 5,
+    "hdbscan_min_samples": 5,
+    "subsamples": 30,
+    "subsample_fraction": 0.8,
+    "grid_sizes": [
+      1025,
+      2049,
+      4097
+    ],
+    "grid_rtol": 0.001,
+    "grid_atol": 1e-08,
+    "distance": "sqrt(J); common Euclidean geometry for all methods"
+  },
+  "fold_config": {
+    "min_period": 0.2,
+    "max_period": 2.0,
+    "samples_per_peak": 5,
+    "harmonics": 4,
+    "phase_points": 256,
+    "max_frequencies": 500000
+  },
+  "jdr_config": {
+    "f_min": 0.5,
+    "f_max": 6.0,
+    "n_frequencies": 4097,
+    "alpha": 0.5,
+    "convention": "standard",
+    "time_origin": 0.0,
+    "use_errors": false
+  },
+  "n_objects": 100,
+  "class_counts": {
+    "RRab": 68,
+    "RRc": 31,
+    "RRd": 1
+  },
+  "region_counts": {
+    "BLG": 50,
+    "GD": 45,
+    "LMC": 5
+  },
+  "majority_class_fraction": 0.68,
+  "grid_convergence": [
+    {
+      "coarse_grid": 1025,
+      "fine_grid": 2049,
+      "relative_max_error": 7.268250119237379e-06,
+      "all_pairs_close": true,
+      "neighbor_agreement": 1.0
+    },
+    {
+      "coarse_grid": 2049,
+      "fine_grid": 4097,
+      "relative_max_error": 1.8171497550152723e-06,
+      "all_pairs_close": true,
+      "neighbor_agreement": 1.0
+    }
+  ],
+  "permutation_invariance": true,
+  "fit_info": {
+    "dbscan_eps": 0.021116531047825918,
+    "medoid_indices": [
+      50,
+      25,
+      98
+    ],
+    "medoid_objective": 2.666446876943396,
+    "dbscan_reference_agreement": true
+  },
+  "models": {
+    "K-medoids": {
+      "coverage": 1.0,
+      "n_noise": 0,
+      "n_clusters": 3,
+      "cluster_sizes": {
+        "0": 55,
+        "1": 27,
+        "2": 18
+      },
+      "purity_assigned": 0.92,
+      "ari_all": 0.60437176394086,
+      "ami_all": 0.556573792304142,
+      "ari_assigned": 0.60437176394086,
+      "class_retention": {
+        "RRab": 1.0,
+        "RRc": 1.0,
+        "RRd": 1.0
+      },
+      "silhouette_assigned": 0.5811284236346754,
+      "ari_region_all": 0.03623758665917182
+    },
+    "K-means": {
+      "coverage": 1.0,
+      "n_noise": 0,
+      "n_clusters": 3,
+      "cluster_sizes": {
+        "0": 27,
+        "1": 56,
+        "2": 17
+      },
+      "purity_assigned": 0.92,
+      "ari_all": 0.6235403331802144,
+      "ami_all": 0.5658363625192664,
+      "ari_assigned": 0.6235403331802144,
+      "class_retention": {
+        "RRab": 1.0,
+        "RRc": 1.0,
+        "RRd": 1.0
+      },
+      "silhouette_assigned": 0.5834728938972632,
+      "ari_region_all": 0.03199817082042861
+    },
+    "Average linkage": {
+      "coverage": 1.0,
+      "n_noise": 0,
+      "n_clusters": 3,
+      "cluster_sizes": {
+        "0": 72,
+        "1": 27,
+        "2": 1
+      },
+      "purity_assigned": 0.92,
+      "ari_all": 0.6993684866291981,
+      "ami_all": 0.5690369568354458,
+      "ari_assigned": 0.6993684866291981,
+      "class_retention": {
+        "RRab": 1.0,
+        "RRc": 1.0,
+        "RRd": 1.0
+      },
+      "silhouette_assigned": 0.5024101065273314,
+      "ari_region_all": 0.002634903447031222
+    },
+    "DBSCAN": {
+      "coverage": 0.78,
+      "n_noise": 22,
+      "n_clusters": 2,
+      "cluster_sizes": {
+        "0": 27,
+        "1": 51
+      },
+      "purity_assigned": 0.9743589743589743,
+      "ari_all": 0.5357837529558915,
+      "ami_all": 0.526021778058956,
+      "ari_assigned": 0.9315976493098265,
+      "class_retention": {
+        "RRab": 0.7647058823529411,
+        "RRc": 0.8064516129032258,
+        "RRd": 1.0
+      },
+      "silhouette_assigned": 0.8229947447418484,
+      "ari_region_all": 0.05080700872951077
+    },
+    "HDBSCAN": {
+      "coverage": 0.98,
+      "n_noise": 2,
+      "n_clusters": 2,
+      "cluster_sizes": {
+        "0": 70,
+        "1": 28
+      },
+      "purity_assigned": 0.9387755102040817,
+      "ari_all": 0.7602908743896865,
+      "ami_all": 0.6062513714211789,
+      "ari_assigned": 0.7909214433984394,
+      "class_retention": {
+        "RRab": 0.9852941176470589,
+        "RRc": 0.967741935483871,
+        "RRd": 1.0
+      },
+      "silhouette_assigned": 0.7112336681354624,
+      "ari_region_all": 0.006470197208065589
+    }
+  },
+  "pca_explained_variance_ratio": [
+    0.8841356867195745,
+    0.08313003480511788
+  ],
+  "limitations": [
+    "Only one RRd; no reliable RRd class-level inference.",
+    "Catalog subtype and sky region are imbalanced; region agreement is descriptive, not a causal confounding test.",
+    "All-star ARI groups rejected points under the noise label; assigned-only metrics and coverage are also reported.",
+    "Subsampling refits clustering on fixed fitted curves; period/photometry uncertainty is not propagated.",
+    "No performance confidence intervals or best-model significance claims from this census.",
+    "The standard spectral representation is version 2, not a verified reproduction of an unidentified JDR paper."
+  ]
+}

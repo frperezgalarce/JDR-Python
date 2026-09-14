@@ -1,0 +1,129 @@
+{
+  "protocol": {
+    "seed": 20260912,
+    "n_objects": 10000,
+    "n_clusters": 3,
+    "n_init": 20,
+    "subsamples": 30,
+    "subset_fraction": 0.8,
+    "grid_sizes": [
+      1025,
+      2049,
+      4097
+    ],
+    "alpha": 0.5,
+    "dbscan_min_samples": 5,
+    "dbscan_quantile": 0.7,
+    "hdbscan_min_cluster_size": 5,
+    "hdbscan_min_samples": 5,
+    "harmonics": 4,
+    "dissimilarity": "Squared Euclidean for every representation; J for JDR",
+    "scaling": "JDR quadrature weights unchanged; classical median/IQR with median imputation, refitted within each subset"
+  },
+  "class_counts": {
+    "RRab": 778,
+    "RRc": 214,
+    "RRd": 8
+  },
+  "representations": [
+    "JDR",
+    "Classical shape",
+    "Classical full"
+  ],
+  "shape_features": [
+    "skewness",
+    "excess_kurtosis",
+    "bowley_skewness",
+    "tail_ratio",
+    "phase_eta",
+    "R21",
+    "R31",
+    "R41",
+    "cos_phi21",
+    "sin_phi21",
+    "cos_phi31",
+    "sin_phi31",
+    "residual_fraction"
+  ],
+  "full_features": [
+    "skewness",
+    "excess_kurtosis",
+    "bowley_skewness",
+    "tail_ratio",
+    "phase_eta",
+    "R21",
+    "R31",
+    "R41",
+    "cos_phi21",
+    "sin_phi21",
+    "cos_phi31",
+    "sin_phi31",
+    "residual_fraction",
+    "log10_period",
+    "log10_std_mag",
+    "log10_q95_q05_amplitude"
+  ],
+  "grid_convergence": [
+    {
+      "coarse_grid": 1025,
+      "fine_grid": 2049,
+      "all_pairs_close": true,
+      "neighbor_agreement": 1.0,
+      "relative_max_error": 6.778418134980502e-08
+    },
+    {
+      "coarse_grid": 2049,
+      "fine_grid": 4097,
+      "all_pairs_close": true,
+      "neighbor_agreement": 1.0,
+      "relative_max_error": 1.6946045346055624e-08
+    }
+  ],
+  "fit_info": {
+    "JDR": {
+      "medoid_objective": 264.7942023367841,
+      "medoid_indices": [
+        657,
+        279,
+        569
+      ],
+      "medoid_iterations": 5,
+      "dbscan_eps": 0.024627733492340226
+    },
+    "Classical shape": {
+      "medoid_objective": 6696.49802970405,
+      "medoid_indices": [
+        416,
+        440,
+        503
+      ],
+      "medoid_iterations": 4,
+      "dbscan_eps": 1.585126864452855
+    },
+    "Classical full": {
+      "medoid_objective": 7485.726666411229,
+      "medoid_indices": [
+        713,
+        101,
+        94
+      ],
+      "medoid_iterations": 4,
+      "dbscan_eps": 2.0152059961247266
+    }
+  },
+  "pca_explained": {
+    "JDR": [
+      0.8746030987075338,
+      0.1106576229056565
+    ],
+    "Classical shape": [
+      0.3069229266653359,
+      0.2611091970404647
+    ],
+    "Classical full": [
+      0.32561891756879174,
+      0.23818386491570312
+    ]
+  },
+  "interpretation": "Exploratory in-sample representation comparison. Classical full explicitly retains period/amplitude; shape control removes those scalars. No catalog-based feature/hyperparameter selection. Eight RRd stars are insufficient for rare-class generalization."
+}

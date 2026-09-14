@@ -1,0 +1,5 @@
+{
+  "elapsed_seconds": 86.81471558299381,
+  "scope": "Full 500-object fits, three spectral grids, permutation recomputation, clustering, stability, sensitivity, PCA and independent integral audit; excludes acquisition, rendering and second run.",
+  "execution": "Local Python process; one numerical thread; no remote compute service."
+}
